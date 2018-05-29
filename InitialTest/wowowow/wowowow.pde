@@ -13,16 +13,22 @@ void setup (){
   ball.speedUp(new Vector(1,0));
   for (int i = 0; i < 200; i ++) {
     map.setBlock(10*i,780,new Block(i*10,780,10,10));
-  } 
+  }
+  for (int i = 0; i < 50; i ++) {
+    map.setBlock(10*i + 100,500,new Block(i*10 + 100,500,10,10));
+  }
+  for (int i = 0; i < 50; i ++) {
+    map.setBlock(10*i + 100,500,new Block(i*10 + 100,500,10,10));
+  }
 }
 
 public void background() {
   background(#178167);
-  for (int[] a : back) {
-    fill(a[4],a[5],a[6]);
-    noStroke();
-    rect(a[0]-xoffset,a[1],a[2],a[3]);
-  }
+  //for (int[] a : back) {
+  //  fill(a[4],a[5],a[6]);
+  //  noStroke();
+  //  rect(a[0]-xoffset,a[1],a[2],a[3]);
+ // }
 }
 
 void draw() {
