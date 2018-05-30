@@ -6,6 +6,9 @@ public void setup(){
   player = new Player();
   size(1000, 400);
   map.addBlock(new Block(0, 275, 1000,125));
+  map.addBlock(new Block(200, 250, 500, 10));
+  map.addBlock(new Block(300, 225, 500, 10));
+  map.addBlock(new Block(400, 200, 500, 10));
 }
 
 public void draw(){
@@ -15,5 +18,5 @@ public void draw(){
 }
 
 public void keyPressed() {
-  
+  player.keyPressed(key);
 }

@@ -11,6 +11,10 @@ public class Map{
     
     }
   
+    public Block blockAt(int x, int y) {
+      if (x < 0 || x >= width || y < 0 || y >= height) return null;
+      return map[y][x];
+    }
     public void addBlock(Block b){
       blocks.add(b);
       for(int i = b.getY(); i < b.getY() + b.getHeight(); i++){

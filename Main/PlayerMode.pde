@@ -9,6 +9,7 @@ public abstract class PlayerMode {
   
   public abstract void update();
   public abstract void keyPressed(int key);
+  public abstract void draw();
 
 
 }
