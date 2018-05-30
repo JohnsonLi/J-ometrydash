@@ -10,7 +10,7 @@ public class Running extends PlayerMode{
   
   public void keyPressed(int key) {
     if (key == ' ') {
-      p.addVelocity(new Vector(0,.2));
+      p.addVelocity(new Vector(0,-.5));
     }
   }
   
