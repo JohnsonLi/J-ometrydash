@@ -19,7 +19,16 @@ public class Player {
     current.update();
     x += velocity.getX();
     y += velocity.getY();
+    
+    if(current.isColliding()){
+      x = 0;
+      y = 0;
+    }
+    
+    
   }
+  
+  
   
   /** Checks all points on bottom*/
   public boolean isOnGround() {
@@ -37,6 +46,8 @@ public class Player {
   }
   public int getX() {return x;}
   public int getY() {return y;}
+  public void setX(int x){this.x = x;}
+  public void setY(int y){this.y = y;}
   public void addVelocity(Vector v) {velocity.add(v);}
   public Vector getVelocity() {return velocity;}
   public int size() {return size;}

@@ -11,8 +11,11 @@ public class Block{
   }
   
   public void draw(){
+    pushMatrix();
     fill(#FFFACD);
     rect(x,y,blockWidth, blockHeight);
+    
+    popMatrix();
   }
 
   public int getX(){return x;}
