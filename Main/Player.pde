@@ -1,12 +1,11 @@
 public class Player {
-  int x,y,size;
+  int x,y;
   Vector velocity;
   PlayerMode current;
   
   public Player() {
-    size = 30;
-    x = size/2;
-    y = 275 - size/2;
+    x = UNIT/2;
+    y = 275 - UNIT/2;
     velocity = new Vector(4, 0);
     current = new Running(this);
   }
@@ -16,24 +15,27 @@ public class Player {
   }
   
   public void update(){
-    current.update();
     x += velocity.getX();
     y += velocity.getY();
+    current.update();
+    
     
     if(current.isColliding()){
-      x = 0;
-      y = 275 - size / 2;
+      die();
     }
     
     
   }
   
-  
+  public void die() {
+    x = 0;
+    y = 275 - UNIT / 2;
+  }
   
   /** Checks all points on bottom*/
   public boolean isOnGround() {
-    for (int i = 0; i < size; i++) {
-      if (map.blockAt(x - size/2 + i, y + size/2) != null) {
+    for (int i = 0; i < UNIT; i++) {
+      if (map.blockAt(x - UNIT/2 + i, y + UNIT/2) != null) {
         return true;
       }
     }
@@ -50,5 +52,4 @@ public class Player {
   public void setY(int y){this.y = y;}
   public void addVelocity(Vector v) {velocity.add(v);}
   public Vector getVelocity() {return velocity;}
-  public int size() {return size;}
 }

@@ -10,8 +10,8 @@ public class Running extends PlayerMode{
   public void update() {
     if (p.isOnGround() && p.getVelocity().getY() > 0) {
       p.getVelocity().setY(0);
-      if(map.blockAt(p.getX() + p.size() / 2, p.getY() + p.size() / 2) != null){
-        p.setY(map.blockAt(p.getX() + p.size() / 2, p.getY() + p.size() / 2).getY() - p.size() / 2);
+      if(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2) != null){
+        p.setY(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2).getY() - UNIT / 2);
       }      
     }
     p.addVelocity(new Vector(0,GRAVITY));
@@ -28,7 +28,7 @@ public class Running extends PlayerMode{
     rotate(theta);
     noStroke();
     fill(#facdff);
-    rect(-p.size()/2,-p.size()/2,p.size(),p.size());
+    rect(-UNIT/2,-UNIT/2,UNIT,UNIT);
   
     popMatrix();
   }
@@ -36,7 +36,7 @@ public class Running extends PlayerMode{
   public boolean isColliding(){
     int x = p.getX();
     int y = p.getY();
-    int size = p.size();
+    int size = UNIT;
     
     if(map.blockAt(x + size / 2, y - size / 2 + 1) != null){
       return true;
