@@ -22,7 +22,7 @@ public class Player {
     
     if(current.isColliding()){
       x = 0;
-      y = 0;
+      y = 275 - size / 2;
     }
     
     
