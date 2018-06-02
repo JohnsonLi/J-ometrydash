@@ -15,6 +15,7 @@ public class Block{
   /** Draws a square at x,y coords*/
   public void draw(){
     pushMatrix();
+    noStroke();
     fill(#FFFACD);
     rect(x,y,blockWidth, blockHeight);
     popMatrix();
