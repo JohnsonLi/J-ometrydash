@@ -30,6 +30,8 @@ public void draw(){
       edit();
       break;
   }
+  
+  System.out.println(state);
 }
 
 public void play(){
@@ -37,7 +39,6 @@ public void play(){
   edit.draw();
   player.update();
   player.draw();
-  line(0,20,width,20);
   
   //if(edit.isHovering()){
   //  System.out.println("hovering");
@@ -48,8 +49,8 @@ public void play(){
 
 public void edit(){
   map.draw();
-  int x = 0;
   drawGrid();
+  back.draw();
 }
 
 public void keyPressed() {
@@ -57,15 +58,19 @@ public void keyPressed() {
 }
 
 public void mouseClicked(){
-  //if (mouseButton == RIGHT) {
-  //  map.addBlock(new Block(mouseX - UNIT / 2, mouseY - UNIT / 2, UNIT, UNIT, BLOCK_COLOR));
-  //}
+  System.out.println(mouseButton);
+  if (mouseButton == RIGHT) {
+    map.addBlock(new Block(mouseX - UNIT / 2, mouseY - UNIT / 2, UNIT, UNIT, BLOCK_COLOR));
+  }
   if (mouseButton == CENTER) {
     player.die();
   }
   if(mouseButton == LEFT && edit.isHovering()){
     state = "EDIT";
   }
+  //if(mouseButton == LEFT && back.isHovering()){
+  //  state = "PLAY";
+  //}
 }
 
 public void drawGrid(){
