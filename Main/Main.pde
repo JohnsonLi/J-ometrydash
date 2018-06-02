@@ -3,7 +3,7 @@ Player player;
 final int UNIT = 30;
 String state = "PLAY";
 
-Button button = new Button(950, 10, 40, 20, "button", #80efbd, #0cb818);
+Button button = new Button(930, 10, 60, 20, "button", #80efbd, #0cb818);
 
 public void setup(){
   map = new Map(#cdebff,#50F442,#FFFACD);

@@ -18,7 +18,13 @@ public class Button{
       
       fill(bColor);
       stroke(stroke);
+      //rectMode(CENTER);
       rect(x, y, bWidth, bHeight);
+      
+      textSize(10);
+      fill(#000000);
+      textAlign(CENTER, CENTER);
+      text("213131331", x/2, y/3, x, y);
       
       popMatrix();
     }
