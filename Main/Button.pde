@@ -13,18 +13,28 @@ public class Button{
       this.label =label;
     }
     
+    public boolean isHovering(){
+      float xMax = x + bWidth;
+      float yMax = y + bHeight;
+      //float xMax = 100;
+      //float yMax = 100;
+      
+      return mouseX > x && mouseX < xMax && mouseY > y && mouseY < yMax;
+      
+    
+    }
+    
     public void draw(){
       pushMatrix(); 
       
       fill(bColor);
       stroke(stroke);
-      //rectMode(CENTER);
       rect(x, y, bWidth, bHeight);
       
-      textSize(10);
+      textSize(12);
       fill(#000000);
       textAlign(CENTER, CENTER);
-      text("213131331", x/2, y/3, x, y);
+      text(label, width - (width - x - bWidth / 2) , bHeight);
       
       popMatrix();
     }

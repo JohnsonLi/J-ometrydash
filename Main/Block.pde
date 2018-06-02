@@ -2,12 +2,14 @@ public class Block{
 
   int blockWidth, blockHeight;
   int x,y;
+  int blockColor;
   boolean harmful;
   
   /** Constructs new block*/
-  public Block(int x, int y, int blockWidth, int blockHeight){
+  public Block(int x, int y, int blockWidth, int blockHeight, int blockColor){
     this.blockWidth = blockWidth;
     this.blockHeight = blockHeight;
+    this.blockColor = blockColor;
     this.x = x;
     this.y = y;
   }
@@ -16,7 +18,7 @@ public class Block{
   public void draw(){
     pushMatrix();
     noStroke();
-    fill(#FFFACD);
+    fill(blockColor);
     rect(x,y,blockWidth, blockHeight);
     popMatrix();
   }

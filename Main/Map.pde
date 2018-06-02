@@ -4,10 +4,8 @@ public class Map{
     int bgColor, floorColor, blockColor;
   
     /** Constructs the map */
-    public Map(int bgColor, int floorColor, int blockColor){
+    public Map(int bgColor){
       this.bgColor = bgColor;
-      this.floorColor = floorColor;
-      this.blockColor = blockColor;
       map = new Block[height][width];
     
     }
