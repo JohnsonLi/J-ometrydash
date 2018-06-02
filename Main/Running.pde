@@ -9,17 +9,13 @@ public class Running extends PlayerMode{
   
   public void update() {
     if (p.isOnGround() && p.getVelocity().getY() > 0) {
-      p.getVelocity().setY(0);    
-      if(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2) != null){
-        p.setY(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2).getY() - UNIT / 2);
-      }
+      p.getVelocity().setY(0);          
     }
     p.setX(int(p.getX() + p.getVelocity().getX()));
     p.setY(int(p.getY() + p.getVelocity().getY()));
-    if (isColliding()) {
-      p.die();
-    }
-    
+    if(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2) != null){
+        p.setY(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2).getY() - UNIT / 2);
+      }
     p.addVelocity(new Vector(0,GRAVITY));
   }
   
@@ -31,7 +27,7 @@ public class Running extends PlayerMode{
       theta = 0;
     }
     translate(p.getX(),p.getY()); //Since rotate rotates around origin, need to use translate
-    rotate(theta);
+    //rotate(theta);
     noStroke();
     fill(#facdff);
     rect(-UNIT/2,-UNIT/2,UNIT,UNIT);
@@ -44,10 +40,13 @@ public class Running extends PlayerMode{
     int y = p.getY();
     int size = UNIT;
     
-    if(map.blockAt(x + size / 2, y - size / 2 + 1) != null){
+    if(map.blockAt(x + size / 2 + 1, y - size / 2 + 1) != null){
       return true;
     }
-    if(map.blockAt(x + size / 2, y + size / 2 - 1) != null){
+    if(map.blockAt(x + size / 2 + 1, y + size / 2 - 1) != null){
+      return true;
+    }
+    if(map.blockAt(x + size / 2 + 1, y) != null){
       return true;
     }
     return false;

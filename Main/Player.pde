@@ -15,6 +15,9 @@ public class Player {
   }
   
   public void update(){
+    if(current.isColliding()){
+      die();
+    }
     current.update();
     
     
@@ -28,8 +31,9 @@ public class Player {
   
   /** Checks all points on bottom*/
   public boolean isOnGround() {
-    for (int i = 1; i < UNIT; i++) {
-      if (map.blockAt(x - UNIT/2 + i - 1, y + UNIT/2) != null) {
+    if (current.isColliding()) return false;
+    for (int i = 0; i < UNIT; i++) {
+      if (map.blockAt((x - UNIT/2) + i , y + UNIT/2) != null) {
         return true;
       }
     }
