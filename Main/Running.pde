@@ -1,6 +1,6 @@
 public class Running extends PlayerMode{
   float theta;
-  final  float GRAVITY = .3;
+  final float GRAVITY = .3;
   
   public Running(Player p) {
     super(p);
@@ -8,11 +8,13 @@ public class Running extends PlayerMode{
   }
   
   public void update() {
+    //Lose Y velocity once on the ground
     if (p.isOnGround() && p.getVelocity().getY() > 0) {
       p.getVelocity().setY(0);          
     }
     p.setX(int(p.getX() + p.getVelocity().getX()));
     p.setY(int(p.getY() + p.getVelocity().getY()));
+    //Sets the player Y to the top of the block it is under
     if(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2) != null){
         p.setY(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2).getY() - UNIT / 2);
       }
@@ -27,7 +29,7 @@ public class Running extends PlayerMode{
       theta = 0;
     }
     translate(p.getX(),p.getY()); //Since rotate rotates around origin, need to use translate
-    //rotate(theta);
+    rotate(theta);
     noStroke();
     fill(#facdff);
     rect(-UNIT/2,-UNIT/2,UNIT,UNIT);
@@ -35,6 +37,7 @@ public class Running extends PlayerMode{
     popMatrix();
   }
   
+  //Checks the top right, middle right, and bottom right points of the block
   public boolean isColliding(){
     int x = p.getX();
     int y = p.getY();

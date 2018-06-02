@@ -1,3 +1,4 @@
+/**Abstract class to hold all the "modes": Running, Flying(Airplane), and UFO*/
 public abstract class PlayerMode {
   int x,y;
   Player p;

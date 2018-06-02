@@ -3,8 +3,9 @@ public class Player {
   Vector velocity;
   PlayerMode current;
   
+  /**Constructs a new player*/
   public Player() {
-    x = UNIT/2;
+    x = 0;
     y = 275 - UNIT/2;
     velocity = new Vector(4, 0);
     current = new Running(this);
@@ -14,16 +15,16 @@ public class Player {
     current.draw(); //Calls the more specific draw for UFO/Airplane
   }
   
+  /**Updates the game*/
   public void update(){
+    //If player is colliding, then restart
     if(current.isColliding()){
       die();
     }
     current.update();
-    
-    
-    
   }
   
+  /** Resets the coords*/
   public void die() {
     x = 0;
     y = 275 - UNIT / 2;
@@ -44,6 +45,7 @@ public class Player {
   public void keyPressed(int key) {
     current.keyPressed(key);
   }
+  
   public int getX() {return x;}
   public int getY() {return y;}
   public void setX(int x){this.x = x;}
