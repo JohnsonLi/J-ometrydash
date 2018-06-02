@@ -9,11 +9,17 @@ public class Running extends PlayerMode{
   
   public void update() {
     if (p.isOnGround() && p.getVelocity().getY() > 0) {
-      p.getVelocity().setY(0);
+      p.getVelocity().setY(0);    
       if(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2) != null){
         p.setY(map.blockAt(p.getX() + UNIT / 2 , p.getY() + UNIT / 2).getY() - UNIT / 2);
-      }      
+      }
     }
+    p.setX(int(p.getX() + p.getVelocity().getX()));
+    p.setY(int(p.getY() + p.getVelocity().getY()));
+    if (isColliding()) {
+      p.die();
+    }
+    
     p.addVelocity(new Vector(0,GRAVITY));
   }
   
