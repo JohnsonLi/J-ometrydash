@@ -14,8 +14,8 @@ public void setup(){
 
 public void draw(){
   pushMatrix();
-  if (xoffset <= -40) {
-    translate(xoffset,0);
+  if (xoffset <= -100) {
+    translate(xoffset+100,0);
   }
   map.draw();
   player.update();

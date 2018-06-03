@@ -28,6 +28,7 @@ public class Player {
   public void die() {
     x = 0;
     y = 275 - UNIT / 2;
+    xoffset = 0;
   }
   
   /** Checks all points on bottom*/
