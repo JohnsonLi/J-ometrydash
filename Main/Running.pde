@@ -26,7 +26,8 @@ public class Running extends PlayerMode {
     if (!p.isOnGround()) {
       theta += PI/40;
     } else {
-      theta = 0;
+      int n = (int)((theta + 99*PI/100) / (PI/2));
+      theta = n * PI/2; //Rotates to the next "flat" position
     }
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     rotate(theta);
