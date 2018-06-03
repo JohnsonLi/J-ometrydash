@@ -12,4 +12,5 @@ public abstract class PlayerMode {
   public abstract void keyPressed(int key);
   public abstract void draw();
   public abstract boolean isColliding();
+  public abstract void reset();
 }

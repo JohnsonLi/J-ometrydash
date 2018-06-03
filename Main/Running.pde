@@ -27,9 +27,8 @@ public class Running extends PlayerMode {
     pushMatrix();
     if (!p.isOnGround()) {
       theta += PI/40;
-      System.out.println("ASDASDASDASDASDAS");
     } else {
-      int n = (int)((theta + 99*PI/200) / (PI/2)) % 4; System.out.println(n);
+      int n = (int)((theta + 99*PI/200) / (PI/2)) % 4;
       theta = n * PI/2; //Rotates to the next "flat" position
     }
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
@@ -63,5 +62,9 @@ public class Running extends PlayerMode {
     if (key == ' ' && p.isOnGround()) {
       p.addVelocity(new Vector(0, -5));
     }
+  }
+  
+  public void reset() {
+    theta = 3 * PI / 2;
   }
 }

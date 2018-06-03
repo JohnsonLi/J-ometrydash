@@ -57,7 +57,6 @@ public void keyPressed() {
 }
 
 public void mouseClicked() {
-  System.out.println(mouseButton);
   if (mouseButton == RIGHT && state.equals("EDIT")) {
     map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
