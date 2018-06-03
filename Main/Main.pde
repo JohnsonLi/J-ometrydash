@@ -17,7 +17,7 @@ public void setup(){
   back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
   size(1020, 420);
   map.addBlock(new Block(0, height - 125, width, 125, FLOOR_COLOR));
-  map.addBlock(new Block(200, 245, 500, UNIT, BLOCK_COLOR));
+  //map.addBlock(new Block(200, 245, 500, UNIT, BLOCK_COLOR));
   //map.addBlock(new Block(200, 220, 500, UNIT, BLOCK_COLOR));
 }
 
@@ -65,14 +65,17 @@ public void mouseClicked(){
   if (mouseButton == CENTER) {
     player.die();
   }
-  if(mouseButton == LEFT && edit.isHovering()){
+  if(mouseButton == LEFT && edit.isHovering() && state.equals("PLAY")){
     state = "EDIT";
   }
-  //if(mouseButton == LEFT && back.isHovering()){
-  //  state = "PLAY";
-  //}
+  if(mouseButton == LEFT && back.isHovering() && state.equals("EDIT")){
+    player.die();
+    state = "PLAY";
+  }
 }
 
+
+//draws a grid with each box with the size of 1 block
 public void drawGrid(){
    stroke(0);
    
