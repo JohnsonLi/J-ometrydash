@@ -20,8 +20,6 @@ public void setup() {
   back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
   size(1020, 420);
   map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
-  //map.addBlock(new Block(200, 245, 500, UNIT, BLOCK_COLOR));
-  //map.addBlock(new Block(200, 220, 500, UNIT, BLOCK_COLOR));
 }
 
 public void draw() {
@@ -34,31 +32,18 @@ public void draw() {
     edit();
     break;
   }
-
-  System.out.println(state);
 }
 
 public void play() {
   pushMatrix();
-
-  if (xoffset <= -100) {
-    translate(xoffset+100, 0);
-  }
+  if (xoffset <= -100) {translate(xoffset+100, 0);} //Lets the block travel to its position before screen scrolls
   map.draw();
-  edit.draw();
   player.update();
   player.draw();
   popMatrix();
-  if (xoffset < limit) {
-    return;
-  }
+  edit.draw();
+  if (xoffset < limit) return;
   xoffset-=4;
-
-  //if(edit.isHovering()){
-  //  System.out.println("hovering");
-  //} else {
-  //  System.out.println("not hovering");
-  //}
 }
 
 public void edit() {
@@ -74,7 +59,7 @@ public void keyPressed() {
 public void mouseClicked() {
   System.out.println(mouseButton);
   if (mouseButton == RIGHT && state.equals("EDIT")) {
-    map.addBlock(new Block(mouseX - UNIT / 2, mouseY - UNIT / 2, UNIT, UNIT, BLOCK_COLOR));
+    map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
   if (mouseButton == CENTER) {
     player.die();
