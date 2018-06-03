@@ -37,6 +37,10 @@ public class Player {
     if (current.isColliding()) return false;
     for (int i = 0; i < UNIT; i++) {
       if (map.blockAt((x - UNIT/2) + i, y + UNIT/2) != null) {
+        if (map.blockAt((x - UNIT/2) + i, y + UNIT/2).isHarmful()) {
+          die();
+          return false;
+        }
         return true;
       }
     }

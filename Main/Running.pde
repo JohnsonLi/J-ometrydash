@@ -45,7 +45,6 @@ public class Running extends PlayerMode {
     int x = p.getX();
     int y = p.getY();
     int size = UNIT;
-
     if (map.blockAt(x + size / 2 + 1, y - size / 2 + 1) != null) {
       return true;
     }
