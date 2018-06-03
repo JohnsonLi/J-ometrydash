@@ -4,6 +4,8 @@ final int UNIT = 30;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
+int xoffset = 0;
+static int limit = -2000;
 
 // State of the program
 String state = "PLAY";
@@ -17,7 +19,7 @@ public void setup() {
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
   back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
   size(1020, 420);
-  map.addBlock(new Block(0, height - 120, width, 120, FLOOR_COLOR));
+  map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
   //map.addBlock(new Block(200, 245, 500, UNIT, BLOCK_COLOR));
   //map.addBlock(new Block(200, 220, 500, UNIT, BLOCK_COLOR));
 }
@@ -36,18 +38,18 @@ public void draw() {
   System.out.println(state);
 }
 
-public void draw(){
-  pushMatrix();
-  if (xoffset <= -100) {
-    translate(xoffset+100,0);
-  }
 public void play() {
+  pushMatrix();
+
+  if (xoffset <= -100) {
+    translate(xoffset+100, 0);
+  }
   map.draw();
   edit.draw();
   player.update();
   player.draw();
   popMatrix();
-  if (xoffset < -2000) {
+  if (xoffset < limit) {
     return;
   }
   xoffset-=4;
@@ -91,7 +93,7 @@ public void mouseClicked() {
 
 // Draws a grid with each box with the size of 1 UNIT
 public void drawGrid() {
-  // Makes like black with less opacity
+  // Makes line black with less opacity
   stroke(0, 120);
 
   for (int x = 0; x < width; x += UNIT) {
@@ -100,4 +102,8 @@ public void drawGrid() {
   for (int y = 0; y < height; y+= UNIT) {
     line(0, y, width, y);
   }
+}
+
+public static int getLimit() {
+  return limit;
 }

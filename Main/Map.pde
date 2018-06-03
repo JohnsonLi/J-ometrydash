@@ -6,12 +6,12 @@ public class Map {
   /** Constructs the map */
   public Map(int bgColor) {
     this.bgColor = bgColor;
-    map = new Block[height][width];
+    map = new Block[height][width + (-1 * Main.getLimit())];
   }
 
   /** Returns the block at specific coords */
   public Block blockAt(int x, int y) {
-    if (x < 0 || x >= width || y < 0 || y >= height) return null;
+    if (x < 0 || x >= width + (-1 * Main.getLimit()) || y < 0 || y >= height) return null;
     return map[y][x];
   }
 

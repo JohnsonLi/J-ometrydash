@@ -18,7 +18,7 @@ public class Player {
   /**Updates the game*/
   public void update() {
     //If player is colliding, then restart
-    if (current.isColliding()) {
+    if (current.isColliding()){
       die();
     }
     current.update();
