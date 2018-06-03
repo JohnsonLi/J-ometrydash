@@ -14,12 +14,17 @@ public void setup(){
 
 public void draw(){
   pushMatrix();
-  translate(xoffset,0);
+  if (xoffset <= -40) {
+    translate(xoffset,0);
+  }
   map.draw();
   player.update();
   player.draw();
   popMatrix();
-  xoffset--;
+  if (xoffset < -2000) {
+    return;
+  }
+  xoffset-=4;
 }
 
 public void keyPressed() {
