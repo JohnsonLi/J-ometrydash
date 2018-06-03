@@ -67,10 +67,12 @@ public void mouseClicked(){
   }
   if(mouseButton == LEFT && edit.isHovering() && state.equals("PLAY")){
     state = "EDIT";
+    return;
   }
   if(mouseButton == LEFT && back.isHovering() && state.equals("EDIT")){
     player.die();
     state = "PLAY";
+    return;
   }
 }
 
