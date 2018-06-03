@@ -44,7 +44,7 @@ public void play() {
   popMatrix();
   edit.draw();
   if (xoffset < limit) return;
-  xoffset-=1;
+  xoffset-=2.5;
 }
 
 public void edit() {

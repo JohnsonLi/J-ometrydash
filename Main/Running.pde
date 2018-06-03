@@ -1,6 +1,6 @@
 public class Running extends PlayerMode {
   float theta;
-  final float GRAVITY = .15;
+  final float GRAVITY = .13;
   PImage img = loadImage("images/jackolantern.png");
 
   public Running(Player p) {
