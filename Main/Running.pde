@@ -5,7 +5,7 @@ public class Running extends PlayerMode {
 
   public Running(Player p) {
     super(p);
-    theta = 0;
+    theta = 3 * PI / 2;
     
   }
 
@@ -27,8 +27,9 @@ public class Running extends PlayerMode {
     pushMatrix();
     if (!p.isOnGround()) {
       theta += PI/40;
+      System.out.println("ASDASDASDASDASDAS");
     } else {
-      int n = (int)((theta + 99*PI/100) / (PI/2));
+      int n = (int)((theta + 99*PI/200) / (PI/2)) % 4; System.out.println(n);
       theta = n * PI/2; //Rotates to the next "flat" position
     }
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
