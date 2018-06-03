@@ -36,14 +36,16 @@ public void draw() {
 
 public void play() {
   pushMatrix();
-  if (xoffset <= -100) {translate(xoffset+100, 0);} //Lets the block travel to its position before screen scrolls
+  if (xoffset <= -100) {
+    translate(xoffset+100, 0);
+  } //Lets the block travel to its position before screen scrolls
   map.draw();
   player.update();
   player.draw();
   popMatrix();
   edit.draw();
   if (xoffset < limit) return;
-  xoffset-=4;
+  xoffset-=3;
 }
 
 public void edit() {

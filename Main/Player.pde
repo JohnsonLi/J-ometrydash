@@ -7,7 +7,7 @@ public class Player {
   public Player() {
     x = 0;
     y = 275 - UNIT/2;
-    velocity = new Vector(4, 0);
+    velocity = new Vector(3, 0);
     current = new Running(this);
   }
 
@@ -18,7 +18,7 @@ public class Player {
   /**Updates the game*/
   public void update() {
     //If player is colliding, then restart
-    if (current.isColliding()){
+    if (current.isColliding()) {
       die();
     }
     current.update();
