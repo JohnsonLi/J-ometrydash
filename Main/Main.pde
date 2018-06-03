@@ -1,6 +1,7 @@
 Map map;
 Player player;
 final int UNIT = 30;
+int xoffset = 0;
 
 public void setup(){
   map = new Map(#cdebff,#50F442,#FFFACD);
@@ -12,9 +13,13 @@ public void setup(){
 }
 
 public void draw(){
+  pushMatrix();
+  translate(xoffset,0);
   map.draw();
   player.update();
   player.draw();
+  popMatrix();
+  xoffset--;
 }
 
 public void keyPressed() {
