@@ -1,10 +1,12 @@
 public class Running extends PlayerMode {
   float theta;
   final float GRAVITY = .3;
+  PImage img = loadImage("images/jackolantern.png");
 
   public Running(Player p) {
     super(p);
     theta = 0;
+    
   }
 
   public void update() {
@@ -33,7 +35,7 @@ public class Running extends PlayerMode {
     rotate(theta);
     noStroke();
     fill(#facdff);
-    rect(-UNIT/2, -UNIT/2, UNIT, UNIT);
+    image(img, -UNIT/2, -UNIT/2, UNIT, UNIT);
 
     popMatrix();
   }
