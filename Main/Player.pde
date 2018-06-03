@@ -7,7 +7,7 @@ public class Player {
   public Player() {
     x = 0;
     y = 275 - UNIT/2;
-    velocity = new Vector(4, 0);
+    velocity = new Vector(2, 0);
     current = new Running(this);
   }
 

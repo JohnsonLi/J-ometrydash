@@ -1,6 +1,6 @@
 public class Running extends PlayerMode {
   float theta;
-  final float GRAVITY = .3;
+  final float GRAVITY = .15;
   PImage img = loadImage("images/jackolantern.png");
 
   public Running(Player p) {
@@ -26,7 +26,7 @@ public class Running extends PlayerMode {
   public void draw() {
     pushMatrix();
     if (!p.isOnGround()) {
-      theta += PI/40;
+      theta += PI/80;
     } else {
       int n = (int)((theta + 99*PI/200) / (PI/2)) % 4;
       theta = n * PI/2; //Rotates to the next "flat" position
@@ -60,7 +60,7 @@ public class Running extends PlayerMode {
 
   public void keyPressed(int key) {
     if (key == ' ' && p.isOnGround()) {
-      p.addVelocity(new Vector(0, -5));
+      p.addVelocity(new Vector(0, -4.5));
     }
   }
   

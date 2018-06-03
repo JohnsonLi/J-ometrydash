@@ -14,6 +14,7 @@ Button edit;
 Button back;
 
 public void setup() {
+  frameRate(144);
   map = new Map(BG_COLOR);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
@@ -43,7 +44,7 @@ public void play() {
   popMatrix();
   edit.draw();
   if (xoffset < limit) return;
-  xoffset-=4;
+  xoffset-=1;
 }
 
 public void edit() {
@@ -58,7 +59,7 @@ public void keyPressed() {
 
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
-    map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+    map.addBlock(new Spike(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR, 0));
   }
   if (mouseButton == CENTER) {
     player.die();
