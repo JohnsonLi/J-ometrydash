@@ -17,7 +17,12 @@ public class Running extends PlayerMode {
     p.setX(int(p.getX() + p.getVelocity().getX()));
     p.setY(int(p.getY() + p.getVelocity().getY()));
     //Sets the player Y to the top of the block it is under
-    if (map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2) != null) {
+    Block block = map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2) ;
+    if (block != null) {
+      if (block.isHarmful()) {
+        p.die();
+        return;
+      }
       p.setY(map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2).getY() - UNIT / 2);
     }
     p.addVelocity(new Vector(0, GRAVITY));

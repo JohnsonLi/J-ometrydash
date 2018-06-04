@@ -23,6 +23,16 @@ public class Block {
     popMatrix();
   }
 
+  //Fills the pixels that make up the block
+  public void editMap(Block[][] map) {
+    for (int i = y; i < y + blockHeight; i++) {
+      for (int j = x; j < x + blockWidth; j++) {
+        map[i][j] = this;
+      }
+    }
+  }
+    
+
   public int getX() {
     return x;
   }
