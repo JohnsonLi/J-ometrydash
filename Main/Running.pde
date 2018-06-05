@@ -1,6 +1,6 @@
 public class Running extends PlayerMode {
   float theta;
-  final float GRAVITY = .13;
+  final float GRAVITY = UNIT/230.;
 
   
 

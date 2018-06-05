@@ -1,6 +1,6 @@
 public class Airplane extends PlayerMode{
   float theta;
-  final float GRAVITY = .05;
+  final float GRAVITY = UNIT/600.;
   PImage planeImg = loadImage("images/airplane.png");
   public Airplane(Player p) {
     super(p);
@@ -28,7 +28,6 @@ public class Airplane extends PlayerMode{
   public boolean isColliding() {
     int x = p.getX();
     int y = p.getY();
-    int size = UNIT;
     //Bottom right of airplane
     if (map.blockAt(x + UNIT + 1, y + UNIT / 2 - 1) != null) {
       return true;
