@@ -37,7 +37,9 @@ public void draw() {
 
 public void play() {
   pushMatrix();
-  if (xoffset <= -100) {translate(xoffset+100, 0);} //Lets the block travel to its position before screen scrolls
+  if (xoffset <= -100) {
+    translate(xoffset+100, 0);
+  } //Lets the block travel to its position before screen scrolls
   map.draw();
   player.update();
   player.draw();
@@ -45,6 +47,7 @@ public void play() {
   edit.draw();
   if (xoffset < limit) return;
   xoffset-=2.5;
+
 }
 
 public void edit() {
