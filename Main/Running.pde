@@ -1,12 +1,11 @@
 public class Running extends PlayerMode {
   float theta;
-  final float GRAVITY = .3;
+  final float GRAVITY = .35;
   PImage img = loadImage("images/jackolantern.png");
 
   public Running(Player p) {
     super(p);
     theta = 3 * PI / 2;
-    
   }
 
   public void update() {
@@ -28,7 +27,8 @@ public class Running extends PlayerMode {
     if (!p.isOnGround()) {
       theta += PI/40;
     } else {
-      int n = (int)((theta + 99*PI/200) / (PI/2)) % 4;
+      int n = (int)((theta + 99*PI/200) / (PI/2)) % 4; 
+
       theta = n * PI/2; //Rotates to the next "flat" position
     }
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
