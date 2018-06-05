@@ -62,7 +62,7 @@ public void keyPressed() {
 
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
-    map.addBlock(new Spike(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR, 0));
+    map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
   if (mouseButton == CENTER) {
     player.die();

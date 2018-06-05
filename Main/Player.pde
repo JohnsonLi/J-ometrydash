@@ -8,7 +8,7 @@ public class Player {
     x = 0;
     y = 275 - UNIT/2;
     velocity = new Vector(2.5, 0);
-    current = new Running(this);
+    current = new Airplane(this);
   }
 
   public void draw() {
@@ -29,7 +29,7 @@ public class Player {
     x = 0;
     y = 275 - UNIT / 2;
     xoffset = 0;
-    current = new Running(this);
+    current = new Airplane(this);
   }
 
   /** Checks all points on bottom*/

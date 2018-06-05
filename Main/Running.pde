@@ -2,7 +2,7 @@ public class Running extends PlayerMode {
   float theta;
   final float GRAVITY = .13;
 
-  PImage img = loadImage("images/jackolantern.png");
+  
 
   public Running(Player p) {
     super(p);
@@ -10,21 +10,7 @@ public class Running extends PlayerMode {
   }
 
   public void update() {
-    //Lose Y velocity once on the ground
-    if (p.isOnGround() && p.getVelocity().getY() > 0) {
-      p.getVelocity().setY(0);
-    }
-    p.setX(int(p.getX() + p.getVelocity().getX()));
-    p.setY(int(p.getY() + p.getVelocity().getY()));
-    //Sets the player Y to the top of the block it is under
-    Block block = map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2) ;
-    if (block != null) {
-      if (block.isHarmful()) {
-        p.die();
-        return;
-      }
-      p.setY(map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2).getY() - UNIT / 2);
-    }
+    super.update();
     p.addVelocity(new Vector(0, GRAVITY));
   }
 
@@ -40,7 +26,6 @@ public class Running extends PlayerMode {
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     rotate(theta);
     noStroke();
-    fill(#facdff);
     image(img, -UNIT/2, -UNIT/2, UNIT, UNIT);
 
     popMatrix();
