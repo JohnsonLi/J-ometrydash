@@ -1,6 +1,6 @@
 Map map;
 Player player;
-final int UNIT = 30;
+final int UNIT = 60;
 final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
@@ -24,7 +24,7 @@ Button spike;
 public void setup() {
   map = new Map(BG_COLOR);
   //floor
-  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
+  map.addBlock(new Block(0, height - FLOOR_HEIGHT, width + (-1 * limit), FLOOR_HEIGHT, FLOOR_COLOR));
   
   BACKGROUND_PIC = loadImage("images/bg.png");
   PLAY = loadImage("images/play.png");

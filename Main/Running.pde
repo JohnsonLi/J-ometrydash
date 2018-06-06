@@ -51,7 +51,7 @@ public class Running extends PlayerMode {
 
   public void keyPressed(int key) {
     if (key == ' ' && p.isOnGround()) {
-      p.addVelocity(new Vector(0, -4.5));
+      p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
     }
   }
 
