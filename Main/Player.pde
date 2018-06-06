@@ -2,13 +2,14 @@ public class Player {
   int x, y;
   Vector velocity;
   PlayerMode current;
+  PlayerMode mode = new Running(this);
 
   /**Constructs a new player*/
   public Player() {
     x = 0;
     y = 275 - UNIT/2;
     velocity = new Vector(2.5, 0);
-    current = new Airplane(this);
+    current = mode;
   }
 
   public void draw() {
@@ -29,7 +30,7 @@ public class Player {
     x = 0;
     y = 275 - UNIT / 2;
     xoffset = 0;
-    current = new Airplane(this);
+    current = mode;
   }
 
   /** Checks all points on bottom*/
@@ -63,6 +64,9 @@ public class Player {
   }
   public void setY(int y) {
     this.y = y;
+  }
+  public void setMode(PlayerMode c){
+    mode = c;
   }
   public void addVelocity(Vector v) {
     velocity.add(v);

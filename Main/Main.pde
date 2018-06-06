@@ -82,6 +82,16 @@ public void mouseClicked() {
     state = "PLAY";
     return;
   }
+  if(mouseButton == LEFT && runMode.isHovering()){
+    player.setMode(new Running(player));
+    player.die();
+    return;
+  }
+  if(mouseButton == LEFT && planeMode.isHovering()){
+    player.setMode(new Airplane(player));
+    player.die();
+    return;
+  }
 }
 
 
@@ -99,8 +109,10 @@ public void drawGrid() {
 }
 
 public void debugButtons(){
-  runMode = new Button(20, 380, 60, 20, "Run Mode", #80efbd, #0cb818);
+  runMode = new Button(20, 380, 70, 20, "Run Mode", #80efbd, #0cb818);
+  planeMode = new Button(110, 380, 70, 20, "Plane Mode", #80efbd, #0cb818);
   runMode.draw();
+  planeMode.draw();
 }
 
 public static int getLimit() {
