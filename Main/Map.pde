@@ -21,9 +21,9 @@ public class Map {
     b.editMap(map);
   }
 
-  public void removeBlock(Block b){
+  public void removeBlock(Block b) {
     blocks.remove(b);
-    if(b != null){
+    if (b != null) {
       b.editMap1(map);
     }
   }

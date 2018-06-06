@@ -2,11 +2,11 @@ public class Airplane extends PlayerMode {
   float theta;
   final float GRAVITY = UNIT/600.;
   PImage planeImg = loadImage("images/airplane.png");
-  
+
   public Airplane(Player p) {
     super(p);
   }
-  
+
   public void update() {
     super.update();
     //If spacebar is held, goes up
