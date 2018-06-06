@@ -26,8 +26,20 @@ public abstract class PlayerMode {
       p.setY(map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2).getY() - UNIT / 2);
     }
   }
+  
+  public boolean isColliding() {
+    for (Block b : blocksToCheck()) {
+      if (b != null) {
+        if (b.isSolid()) return true;
+        b.portalAction();
+        return false;
+      }
+    }
+    return false;
+  }
+  public abstract ArrayList<Block> blocksToCheck();
   public abstract void keyPressed(int key);
   public abstract void draw();
-  public abstract boolean isColliding();
+  
   public abstract void reset();
 }

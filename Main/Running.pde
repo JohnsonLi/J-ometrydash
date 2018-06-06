@@ -32,23 +32,18 @@ public class Running extends PlayerMode {
     popMatrix();
   }
 
-  //Checks the top right, middle right, and bottom right points of the block
-  public boolean isColliding() {
+  public ArrayList<Block> blocksToCheck() {
     int x = p.getX();
     int y = p.getY();
     int size = UNIT;
-    if (map.blockAt(x + size / 2 + 2, y - size / 2 + 2) != null) {
-      return true;
-    }
-    if (map.blockAt(x + size / 2 + 2, y + size / 2 - 2) != null) {
-      return true;
-    }
-    if (map.blockAt(x + size / 2 + 1, y) != null) {
-      return true;
-    }
-    return false;
+    ArrayList<Block> blocks = new ArrayList<Block>(); //Blocks to check
+   
+    blocks.add(map.blockAt(x + size / 2 + 2, y - size / 2 + 2)); //top right
+    blocks.add(map.blockAt(x - size / 2 + 2, y - size / 2 + 2)); //top left
+    blocks.add(map.blockAt(x + size / 2 + 2, y + size / 2 - 2)); //bottom right
+    blocks.add(map.blockAt(x + size / 2 + 1, y)); //right middle
+    return blocks;
   }
-
   public void keyPressed(int key) {
     if (key == ' ' && p.isOnGround()) {
       p.addVelocity(new Vector(0, -1 * UNIT / 6.66));

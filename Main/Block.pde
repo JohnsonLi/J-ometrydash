@@ -3,7 +3,7 @@ public class Block {
   int blockWidth, blockHeight;
   int x, y;
   int blockColor;
-  boolean harmful;
+  boolean harmful, isSolid;
 
   /** Constructs new block*/
   public Block(int x, int y, int blockWidth, int blockHeight, int blockColor) {
@@ -12,6 +12,7 @@ public class Block {
     this.blockColor = blockColor;
     this.x = x;
     this.y = y;
+    this.isSolid = true;
   }
 
   /** Draws a square at x,y coords*/
@@ -40,7 +41,9 @@ public class Block {
     }
   }
 
-
+  public void portalAction() {
+  
+  }
   public int getX() {
     return x;
   }
@@ -55,5 +58,8 @@ public class Block {
   }
   public boolean isHarmful() {
     return harmful;
+  }
+  public boolean isSolid() {
+    return isSolid;
   }
 }

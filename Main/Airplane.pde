@@ -26,28 +26,16 @@ public class Airplane extends PlayerMode{
       image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
   }
-  public boolean isColliding() {
+  
+  public ArrayList<Block> blocksToCheck() {
     int x = p.getX();
     int y = p.getY();
-    //Bottom right of airplane
-    if (map.blockAt(x + UNIT + 1, y + UNIT / 2 - 1) != null) {
-      return true;
-    }
-    //Top right of airplane
-    if (map.blockAt(x + UNIT + 1, y - UNIT / 3) != null) {
-      return true;
-    }
-    //Top right of player box (b/c it sticks out)
-    if (map.blockAt(x + UNIT/6, y - 2*UNIT/3) != null) {
-      return true;
-    }
-    return false;
-  
+    ArrayList<Block> blocks = new ArrayList<Block>();
+    blocks.add(map.blockAt(x + UNIT + 1, y + UNIT / 2 - 1)); //bottom right of plane
+    blocks.add(map.blockAt(x + UNIT + 1, y - UNIT / 3)); //top right of plane
+    blocks.add(map.blockAt(x + UNIT/6, y - 2*UNIT/3)); //top right of player
+    return blocks;
   }
-  
-
-
-
   
   public void keyPressed(int key) {}
   public void reset() {}

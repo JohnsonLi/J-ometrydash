@@ -14,12 +14,9 @@ static int limit = -20000;
 String state = "MENU";
 String currentlySelected = "BLOCK";
 
-Button edit;
-Button back;
-Button runMode;
-Button planeMode;
-Button block;
-Button spike;
+Button edit,back;
+Button runMode,planeMode;
+Button block,spike,portal;
 
 public void setup() {
   map = new Map(BG_COLOR);
@@ -125,8 +122,11 @@ public void mouseClicked() {
     case "SPIKE":
       map.addBlock(new Spike(UNIT * ((mouseX - xoffset) / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
       break;
+    case "PORTAL":
+      map.addBlock(new Portal(UNIT * ((mouseX - xoffset) / UNIT), UNIT * ((mouseY / UNIT)-1), UNIT, 3 * UNIT, BLOCK_COLOR));
+      break;
     }
-  }
+   }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY));
   }
@@ -150,6 +150,10 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && spike.isHovering() && state.equals("EDIT")) {
       currentlySelected = "SPIKE";
+      return;
+    }
+    if (mouseButton == LEFT && portal.isHovering() && state.equals("EDIT")) {
+      currentlySelected = "PORTAL";
       return;
     }
   }
@@ -200,10 +204,12 @@ public void debugButtons() {
 }
 
 public void editButtons() {
-  block = new Button(930, 350, 60, 20, "Block", #80efbd, #0cb818);
-  spike = new Button(930, 380, 60, 20, "Spikes", #80efbd, #0cb818);
+  block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
+  spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
+  portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
   block.draw();
   spike.draw();
+  portal.draw();
 }
 
 public static int getLimit() {
