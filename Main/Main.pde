@@ -64,7 +64,7 @@ public void keyPressed() {
     xoffset -= 5;
   }
   else if (keyCode == LEFT && state.equals("EDIT")) {
-    if (xoffset == 0) return;
+    //if (xoffset == 0) return;
     xoffset += 5;
   } else {
     player.keyPressed(key);
@@ -74,7 +74,7 @@ public void keyPressed() {
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
     System.out.println(xoffset);
-    map.addBlock(new Block(UNIT * (mouseX - xoffset / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+    map.addBlock(new Block(UNIT * ((mouseX - xoffset) / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
   if (mouseButton == CENTER) {
     player.die();
@@ -94,7 +94,7 @@ public void mouseClicked() {
 
 // Draws a grid with each box with the size of 1 UNIT
 public void drawGrid() {
-  
+    
     // Makes line black with less opacity
     stroke(0, 120);
   
@@ -104,6 +104,7 @@ public void drawGrid() {
     for (int y = 0; y < height; y+= UNIT) {
       line(0, y, width - xoffset, y);
     }
+   
 }
 
 public static int getLimit() {
