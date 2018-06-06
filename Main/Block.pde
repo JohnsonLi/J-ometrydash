@@ -31,6 +31,14 @@ public class Block {
       }
     }
   }
+  
+  public void editMap1(Block[][] map) {
+    for (int i = y; i < y + blockHeight; i++) {
+      for (int j = x; j < x + blockWidth; j++) {
+        map[i][j] = this;
+      }
+    }
+  }
 
 
   public int getX() {

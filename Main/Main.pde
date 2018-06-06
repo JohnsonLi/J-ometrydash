@@ -5,6 +5,7 @@ final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
+
 int xoffset = 0;
 static int limit = -2000;
 
@@ -63,6 +64,7 @@ public void edit() {
   map.draw();
   drawGrid();
   back.draw();
+  
 }
 
 public void keyPressed() {
@@ -72,6 +74,9 @@ public void keyPressed() {
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT") && mouseY < (height -  FLOOR_HEIGHT * UNIT)) {
     map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+  }
+  if (mouseButton == LEFT && state.equals("EDIT") && mouseY < (height -  FLOOR_HEIGHT * UNIT)) {
+    map.removeBlock(map.blockAt(mouseX, mouseY));
   }
   if (mouseButton == CENTER) {
     player.die();
