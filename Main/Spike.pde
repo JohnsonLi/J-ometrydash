@@ -2,7 +2,7 @@ public class Spike extends Block {
 
   int orientation; //0 = upright; 1 = tip on the right; 2 = upside down; 3 = tip on the right
 
-  public Spike(int x, int y, int base, int bheight, int bcolor, int orientation) {
+  public Spike(int x, int y, int base, int bheight, int bcolor) {
     super(x, y, base, bheight, bcolor);
     this.orientation = orientation;
     harmful = true;

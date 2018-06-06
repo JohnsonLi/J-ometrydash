@@ -11,7 +11,7 @@ static int limit = -2000;
 
 // State of the program
 String state = "PLAY";
-
+String currentlySelected = "BLOCK";
 
 Button edit;
 Button back;
@@ -75,7 +75,14 @@ public void keyPressed() {
 
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT") && mouseY < (height -  FLOOR_HEIGHT * UNIT)) {
-    map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+    switch (currentlySelected) {
+    case "BLOCK":
+      map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+      break;
+    case "SPIKE":
+      map.addBlock(new Spike(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+      break;
+    }
   }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < (height -  FLOOR_HEIGHT * UNIT)) {
     map.removeBlock(map.blockAt(mouseX, mouseY));
@@ -91,6 +98,16 @@ public void mouseClicked() {
     player.die();
     state = "PLAY";
     return;
+  }
+  if (state.equals("EDIT")) {
+    if (mouseButton == LEFT && block.isHovering() && state.equals("EDIT")) {
+      currentlySelected = "BLOCK";
+      return;
+    }
+    if (mouseButton == LEFT && spike.isHovering() && state.equals("EDIT")) {
+      currentlySelected = "SPIKE";
+      return;
+    }
   }
   if (mouseButton == LEFT && runMode.isHovering()) {
     player.setMode(new Running(player));
