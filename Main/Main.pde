@@ -25,7 +25,7 @@ public void setup() {
   map = new Map(BG_COLOR);
   //floor
   map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
-  
+
   BACKGROUND_PIC = loadImage("images/bg.png");
   PLAY = loadImage("images/play.png");
   QUIT = loadImage("images/quit.png");
@@ -54,7 +54,7 @@ public void draw() {
 }
 
 public void play() {
-  
+
 
   pushMatrix();
   if (xoffset <= -200) {
@@ -74,9 +74,9 @@ public void play() {
 
 public void edit() {
   pushMatrix();
-    translate(xoffset, 0);
-    map.draw();
-    drawGrid();
+  translate(xoffset, 0);
+  map.draw();
+  drawGrid();
   popMatrix();
   back.draw();
   editButtons();
@@ -90,27 +90,23 @@ public void edit() {
 public void menu() {
   background(BACKGROUND_PIC);
   imageMode(CENTER);
-  //image(PLAY, width / 2, 225);
-  //image(QUIT, width / 2, 325);
-  if((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))){
+  if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
     image(PLAY_HOVER, width / 2, 225);
   } else {
     image(PLAY, width / 2, 225);
   }
 
-  if((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))){
+  if ((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
     image(QUIT_HOVER, width / 2, 325);
   } else {
     image(QUIT, width / 2, 325);
   }
-
 }
 
 public void keyPressed() {
   if (keyCode == RIGHT && state.equals("EDIT")) {
     xoffset -= 5;
-  }
-  else if (keyCode == LEFT && state.equals("EDIT")) {
+  } else if (keyCode == LEFT && state.equals("EDIT")) {
     //if (xoffset == 0) return;
     xoffset += 5;
   } else {
@@ -129,7 +125,7 @@ public void mouseClicked() {
       break;
     }
   }
-  if (mouseButton == LEFT && state.equals("EDIT")) {
+  if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY));
   }
   if (mouseButton == CENTER) {
@@ -167,33 +163,31 @@ public void mouseClicked() {
       return;
     }
   }
-  
-  if(state.equals("MENU")){
-    if(mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))){
+
+  if (state.equals("MENU")) {
+    if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
       state = "PLAY";
       return;
     }
-    if((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))){
+    if ((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
       exit();
     }
   }
-
 }
 
 
 // Draws a grid with each box with the size of 1 UNIT
 public void drawGrid() {
-    
-    // Makes line black with less opacity
-    stroke(0, 120);
-  
-    for (int x = 0; x < width - xoffset ; x += UNIT) {
-      line(x, 0, x, height);
-    }
-    for (int y = 0; y < height; y+= UNIT) {
-      line(0, y, width - xoffset, y);
-    }
 
+  // Makes line black with less opacity
+  stroke(0, 120);
+
+  for (int x = 0; x < width - xoffset; x += UNIT) {
+    line(x, 0, x, height);
+  }
+  for (int y = 0; y < height; y+= UNIT) {
+    line(0, y, width - xoffset, y);
+  }
 }
 
 public void debugButtons() {
