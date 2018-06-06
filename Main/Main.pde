@@ -5,7 +5,7 @@ final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
-PImage BACKGROUND_PIC;
+PImage BACKGROUND_PIC, PLAY, QUIT;
 
 int xoffset = 0;
 static int limit = -2000;
@@ -23,6 +23,8 @@ Button spike;
 
 public void setup() {
   BACKGROUND_PIC = loadImage("images/bg.png");
+  PLAY = loadImage("images/play.png");
+  QUIT = loadImage("images/quit.png");
   frameRate(144);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
@@ -49,7 +51,7 @@ public void play() {
   map = new Map(BG_COLOR);
   //floor
   map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
-  
+
   pushMatrix();
 
   if (xoffset <= -100) {
@@ -79,8 +81,11 @@ public void edit() {
   text("current obstacle: " + currentlySelected, 120, 380);
 }
 
-public void menu(){
+public void menu() {
   background(BACKGROUND_PIC);
+  imageMode(CENTER);
+  image(PLAY, width / 2, 225);
+  image(QUIT, width / 2, 325);
 }
 
 public void keyPressed() {
@@ -123,16 +128,19 @@ public void mouseClicked() {
       return;
     }
   }
-  if (mouseButton == LEFT && runMode.isHovering()) {
-    player.setMode(new Running(player));
-    player.die();
-    return;
+  if (state.equals("PLAY")) {
+    if (mouseButton == LEFT && runMode.isHovering()) {
+      player.setMode(new Running(player));
+      player.die();
+      return;
+    }
+    if (mouseButton == LEFT && planeMode.isHovering()) {
+      player.setMode(new Airplane(player));
+      player.die();
+      return;
+    }
   }
-  if (mouseButton == LEFT && planeMode.isHovering()) {
-    player.setMode(new Airplane(player));
-    player.die();
-    return;
-  }
+
 }
 
 
