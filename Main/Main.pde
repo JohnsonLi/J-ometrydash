@@ -5,7 +5,7 @@ final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
-PImage BACKGROUND_PIC, PLAY, QUIT;
+PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER;
 
 int xoffset = 0;
 static int limit = -2000;
@@ -25,6 +25,8 @@ public void setup() {
   BACKGROUND_PIC = loadImage("images/bg.png");
   PLAY = loadImage("images/play.png");
   QUIT = loadImage("images/quit.png");
+  PLAY_HOVER = loadImage("images/play-hover.png");
+  QUIT_HOVER = loadImage("images/quit-hover.png");
   frameRate(144);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
@@ -84,8 +86,20 @@ public void edit() {
 public void menu() {
   background(BACKGROUND_PIC);
   imageMode(CENTER);
-  image(PLAY, width / 2, 225);
-  image(QUIT, width / 2, 325);
+  //image(PLAY, width / 2, 225);
+  //image(QUIT, width / 2, 325);
+  if((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))){
+    image(PLAY_HOVER, width / 2, 225);
+  } else {
+    image(PLAY, width / 2, 225);
+  }
+
+  if((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))){
+    image(QUIT_HOVER, width / 2, 325);
+  } else {
+    image(QUIT, width / 2, 325);
+  }
+
 }
 
 public void keyPressed() {
@@ -139,6 +153,10 @@ public void mouseClicked() {
       player.die();
       return;
     }
+  }
+  
+  if(state.equals("MENU")){
+    
   }
 
 }
