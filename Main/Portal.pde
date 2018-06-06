@@ -17,6 +17,6 @@ public class Portal extends Block {
   public void portalAction() {
     if (!(player.getMode() instanceof Airplane)) {
       player.setMode(new Airplane(player));
-    }
+    } 
   }
 }

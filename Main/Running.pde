@@ -36,13 +36,13 @@ public class Running extends PlayerMode {
     int x = p.getX();
     int y = p.getY();
     int size = UNIT;
-    ArrayList<Block> blocks = new ArrayList<Block>(); //Blocks to check
+    ArrayList<Block> blocksToCheck = new ArrayList<Block>(); //Blocks to check
    
-    blocks.add(map.blockAt(x + size / 2 + 2, y - size / 2 + 2)); //top right
-    blocks.add(map.blockAt(x - size / 2 + 2, y - size / 2 + 2)); //top left
-    blocks.add(map.blockAt(x + size / 2 + 2, y + size / 2 - 2)); //bottom right
-    blocks.add(map.blockAt(x + size / 2 + 1, y)); //right middle
-    return blocks;
+    blocksToCheck.add(map.blockAt(x + size / 2 + 2, y - size / 2 + 2)); //top right
+    blocksToCheck.add(map.blockAt(x - size / 4 + 2, y - size / 2 + 2)); //top left
+    blocksToCheck.add(map.blockAt(x + size / 2 + 2, y + size / 2 - 2)); //bottom right
+    blocksToCheck.add(map.blockAt(x + size / 2 + 1, y)); //right middle
+    return blocksToCheck;
   }
   public void keyPressed(int key) {
     if (key == ' ' && p.isOnGround()) {

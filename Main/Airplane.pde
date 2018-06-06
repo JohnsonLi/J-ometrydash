@@ -30,11 +30,11 @@ public class Airplane extends PlayerMode{
   public ArrayList<Block> blocksToCheck() {
     int x = p.getX();
     int y = p.getY();
-    ArrayList<Block> blocks = new ArrayList<Block>();
-    blocks.add(map.blockAt(x + UNIT + 1, y + UNIT / 2 - 1)); //bottom right of plane
-    blocks.add(map.blockAt(x + UNIT + 1, y - UNIT / 3)); //top right of plane
-    blocks.add(map.blockAt(x + UNIT/6, y - 2*UNIT/3)); //top right of player
-    return blocks;
+    ArrayList<Block> blocksToCheck = new ArrayList<Block>();
+    blocksToCheck.add(map.blockAt(x + UNIT + 1, y + UNIT / 2 - 1)); //bottom right of plane
+    blocksToCheck.add(map.blockAt(x + UNIT + 1, y - UNIT / 3)); //top right of plane
+    blocksToCheck.add(map.blockAt(x + UNIT/6, y - 2*UNIT/3)); //top right of player
+    return blocksToCheck;
   }
   
   public void keyPressed(int key) {}
