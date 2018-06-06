@@ -17,6 +17,7 @@ public class Map {
 
   /** Adds a new block onto the map*/
   public void addBlock(Block b) {
+    if (map[b.getY()][b.getX()] != null) return;
     blocks.add(b);
     b.editMap(map);
   }
