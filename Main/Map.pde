@@ -17,8 +17,16 @@ public class Map {
 
   /** Adds a new block onto the map*/
   public void addBlock(Block b) {
+    if (map[b.getY()][b.getX()] != null) return;
     blocks.add(b);
     b.editMap(map);
+  }
+
+  public void removeBlock(Block b) {
+    blocks.remove(b);
+    if (b != null) {
+      b.editMap1(map);
+    }
   }
 
   //Draws every block and the colors

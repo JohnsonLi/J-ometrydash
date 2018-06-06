@@ -2,7 +2,7 @@ public class Running extends PlayerMode {
   float theta;
   final float GRAVITY = UNIT/230.;
 
-  
+
 
   public Running(Player p) {
     super(p);
@@ -26,6 +26,7 @@ public class Running extends PlayerMode {
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     rotate(theta);
     noStroke();
+    imageMode(CORNER);
     image(img, -UNIT/2, -UNIT/2, UNIT, UNIT);
 
     popMatrix();
@@ -36,10 +37,10 @@ public class Running extends PlayerMode {
     int x = p.getX();
     int y = p.getY();
     int size = UNIT;
-    if (map.blockAt(x + size / 2 + 1, y - size / 2 + 1) != null) {
+    if (map.blockAt(x + size / 2 + 2, y - size / 2 + 2) != null) {
       return true;
     }
-    if (map.blockAt(x + size / 2 + 1, y + size / 2 - 1) != null) {
+    if (map.blockAt(x + size / 2 + 2, y + size / 2 - 2) != null) {
       return true;
     }
     if (map.blockAt(x + size / 2 + 1, y) != null) {
@@ -50,10 +51,10 @@ public class Running extends PlayerMode {
 
   public void keyPressed(int key) {
     if (key == ' ' && p.isOnGround()) {
-      p.addVelocity(new Vector(0, -4.5));
+      p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
     }
   }
-  
+
   public void reset() {
     theta = 3 * PI / 2;
   }

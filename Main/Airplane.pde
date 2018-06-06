@@ -21,6 +21,7 @@ public class Airplane extends PlayerMode{
       translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
       noStroke();
       rotate(atan(p.getVelocity().getY()/p.getVelocity().getX()) / 2);
+      imageMode(CORNER);
       image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
       image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
