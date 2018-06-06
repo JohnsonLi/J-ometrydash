@@ -1,6 +1,7 @@
 Map map;
 Player player;
 final int UNIT = 30;
+final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
@@ -22,7 +23,9 @@ public void setup() {
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
   back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
   size(1020, 420);
-  map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
+  
+  //floor
+  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
 }
 
 public void draw() {
@@ -67,7 +70,7 @@ public void keyPressed() {
 }
 
 public void mouseClicked() {
-  if (mouseButton == RIGHT && state.equals("EDIT")) {
+  if (mouseButton == RIGHT && state.equals("EDIT") && mouseY < (height -  FLOOR_HEIGHT * UNIT)) {
     map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
   if (mouseButton == CENTER) {

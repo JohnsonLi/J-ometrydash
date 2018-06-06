@@ -1,10 +1,12 @@
-public class Airplane extends PlayerMode{
+public class Airplane extends PlayerMode {
   float theta;
   final float GRAVITY = UNIT/600.;
   PImage planeImg = loadImage("images/airplane.png");
+  
   public Airplane(Player p) {
     super(p);
   }
+  
   public void update() {
     super.update();
     //If spacebar is held, goes up
@@ -14,15 +16,15 @@ public class Airplane extends PlayerMode{
       p.addVelocity(new Vector(0, GRAVITY));
     }
   }
-  
-  
+
+
   public void draw() {
     pushMatrix();
-      translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
-      noStroke();
-      rotate(atan(p.getVelocity().getY()/p.getVelocity().getX()) / 2);
-      image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
-      image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
+    translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
+    noStroke();
+    rotate(atan(p.getVelocity().getY()/p.getVelocity().getX()) / 2);
+    image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
+    image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
   }
   public boolean isColliding() {
@@ -41,13 +43,14 @@ public class Airplane extends PlayerMode{
       return true;
     }
     return false;
-  
   }
-  
 
 
 
-  
-  public void keyPressed(int key) {}
-  public void reset() {}
+
+
+  public void keyPressed(int key) {
+  }
+  public void reset() {
+  }
 }

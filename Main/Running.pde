@@ -2,7 +2,7 @@ public class Running extends PlayerMode {
   float theta;
   final float GRAVITY = UNIT/230.;
 
-  
+
 
   public Running(Player p) {
     super(p);
@@ -53,7 +53,7 @@ public class Running extends PlayerMode {
       p.addVelocity(new Vector(0, -4.5));
     }
   }
-  
+
   public void reset() {
     theta = 3 * PI / 2;
   }

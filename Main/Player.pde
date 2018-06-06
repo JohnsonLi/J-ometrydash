@@ -65,7 +65,7 @@ public class Player {
   public void setY(int y) {
     this.y = y;
   }
-  public void setMode(PlayerMode c){
+  public void setMode(PlayerMode c) {
     mode = c;
   }
   public void addVelocity(Vector v) {
