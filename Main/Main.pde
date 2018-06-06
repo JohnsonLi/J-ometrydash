@@ -37,8 +37,8 @@ public void draw() {
 
 public void play() {
   pushMatrix();
-  if (xoffset <= -100) {
-    translate(xoffset+100, 0);
+  if (xoffset <= -200) {
+    translate(xoffset+200, 0);
   } //Lets the block travel to its position before screen scrolls
   map.draw();
   player.update();
