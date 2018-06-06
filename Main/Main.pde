@@ -67,6 +67,11 @@ public void edit() {
   drawGrid();
   back.draw();
   editButtons();
+
+  textSize(18);
+  fill(#000000);
+  textAlign(CENTER, CENTER);
+  text("current obstacle: " + currentlySelected, 120, 380);
 }
 
 public void keyPressed() {
