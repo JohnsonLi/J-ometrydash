@@ -5,12 +5,13 @@ final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
+PImage BACKGROUND_PIC;
 
 int xoffset = 0;
 static int limit = -2000;
 
 // State of the program
-String state = "PLAY";
+String state = "MENU";
 String currentlySelected = "BLOCK";
 
 Button edit;
@@ -21,15 +22,12 @@ Button block;
 Button spike;
 
 public void setup() {
+  BACKGROUND_PIC = loadImage("images/bg.png");
   frameRate(144);
-  map = new Map(BG_COLOR);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
   back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
   size(1020, 420);
-
-  //floor
-  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
 }
 
 public void draw() {
@@ -41,10 +39,17 @@ public void draw() {
   case "EDIT":
     edit();
     break;
+  case "MENU":
+    menu();
+    break;
   }
 }
 
 public void play() {
+  map = new Map(BG_COLOR);
+  //floor
+  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
+  
   pushMatrix();
 
   if (xoffset <= -100) {
@@ -72,6 +77,10 @@ public void edit() {
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("current obstacle: " + currentlySelected, 120, 380);
+}
+
+public void menu(){
+  background(BACKGROUND_PIC);
 }
 
 public void keyPressed() {
