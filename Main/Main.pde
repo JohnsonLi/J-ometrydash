@@ -5,7 +5,7 @@ final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 final int BLOCK_COLOR = #fffacd;
 int xoffset = 0;
-static int limit = -2000;
+static int limit = -20000;
 
 // State of the program
 String state = "PLAY";
@@ -51,24 +51,37 @@ public void play() {
 }
 
 public void edit() {
-  map.draw();
-  drawGrid();
+  pushMatrix();
+    translate(xoffset, 0);
+    map.draw();
+    drawGrid();
+  popMatrix();
   back.draw();
 }
 
 public void keyPressed() {
-  player.keyPressed(key);
+  if (keyCode == RIGHT && state.equals("EDIT")) {
+    xoffset -= 5;
+  }
+  else if (keyCode == LEFT && state.equals("EDIT")) {
+    if (xoffset == 0) return;
+    xoffset += 5;
+  } else {
+    player.keyPressed(key);
+  }
 }
 
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
-    map.addBlock(new Block(UNIT * (mouseX / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
+    System.out.println(xoffset);
+    map.addBlock(new Block(UNIT * (mouseX - xoffset / UNIT), UNIT * (mouseY / UNIT), UNIT, UNIT, BLOCK_COLOR));
   }
   if (mouseButton == CENTER) {
     player.die();
   }
   if (mouseButton == LEFT && edit.isHovering() && state.equals("PLAY")) {
     state = "EDIT";
+    xoffset = 0;
     return;
   }
   if (mouseButton == LEFT && back.isHovering() && state.equals("EDIT")) {
@@ -81,15 +94,16 @@ public void mouseClicked() {
 
 // Draws a grid with each box with the size of 1 UNIT
 public void drawGrid() {
-  // Makes line black with less opacity
-  stroke(0, 120);
-
-  for (int x = 0; x < width; x += UNIT) {
-    line(x, 0, x, height);
-  }
-  for (int y = 0; y < height; y+= UNIT) {
-    line(0, y, width, y);
-  }
+  
+    // Makes line black with less opacity
+    stroke(0, 120);
+  
+    for (int x = 0; x < width - xoffset ; x += UNIT) {
+      line(x, 0, x, height);
+    }
+    for (int y = 0; y < height; y+= UNIT) {
+      line(0, y, width - xoffset, y);
+    }
 }
 
 public static int getLimit() {
