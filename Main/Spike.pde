@@ -30,4 +30,18 @@ public class Spike extends Block {
       }
     }
   }
+  
+  public void editMap1(Block[][] map) {
+    float tipX = x + blockWidth/2.;
+    float tipY = y;
+
+    for (int i = x; i < tipX; i++) {
+      //                  dY       /     dX              *  x           + b
+      float currentY = (blockHeight / (blockWidth / 2.)) * (x-i) + y + blockHeight;
+      //Goes along the y value and finds all points within
+      for (int j = i; j < i + blockWidth * ((currentY - y) / (double) blockHeight); j++) {
+        map[(int)currentY][j] = null;
+      }
+    }
+  }
 }
