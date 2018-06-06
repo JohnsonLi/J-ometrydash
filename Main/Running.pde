@@ -26,6 +26,7 @@ public class Running extends PlayerMode {
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     rotate(theta);
     noStroke();
+    imageMode(CORNER);
     image(img, -UNIT/2, -UNIT/2, UNIT, UNIT);
 
     popMatrix();

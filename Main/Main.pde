@@ -22,6 +22,10 @@ Button block;
 Button spike;
 
 public void setup() {
+  map = new Map(BG_COLOR);
+  //floor
+  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
+  
   BACKGROUND_PIC = loadImage("images/bg.png");
   PLAY = loadImage("images/play.png");
   QUIT = loadImage("images/quit.png");
@@ -50,9 +54,7 @@ public void draw() {
 }
 
 public void play() {
-  map = new Map(BG_COLOR);
-  //floor
-  map.addBlock(new Block(0, height - FLOOR_HEIGHT * UNIT, width + (-1 * limit), 120, FLOOR_COLOR));
+  
 
   pushMatrix();
 
@@ -156,7 +158,13 @@ public void mouseClicked() {
   }
   
   if(state.equals("MENU")){
-    
+    if(mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))){
+      state = "PLAY";
+      return;
+    }
+    if((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))){
+      exit();
+    }
   }
 
 }
