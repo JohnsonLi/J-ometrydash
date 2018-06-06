@@ -12,6 +12,8 @@ String state = "PLAY";
 
 Button edit;
 Button back;
+Button runMode;
+Button planeMode;
 
 public void setup() {
   frameRate(144);
@@ -37,14 +39,18 @@ public void draw() {
 
 public void play() {
   pushMatrix();
+  
   if (xoffset <= -100) {
     translate(xoffset+100, 0);
   } //Lets the block travel to its position before screen scrolls
   map.draw();
   player.update();
   player.draw();
+  
   popMatrix();
+  
   edit.draw();
+  debugButtons();
   if (xoffset < limit) return;
   xoffset-=2.5;
 
@@ -82,7 +88,7 @@ public void mouseClicked() {
 // Draws a grid with each box with the size of 1 UNIT
 public void drawGrid() {
   // Makes line black with less opacity
-  stroke(0, 120);
+  stroke(0, 100);
 
   for (int x = 0; x < width; x += UNIT) {
     line(x, 0, x, height);
@@ -90,6 +96,11 @@ public void drawGrid() {
   for (int y = 0; y < height; y+= UNIT) {
     line(0, y, width, y);
   }
+}
+
+public void debugButtons(){
+  runMode = new Button(20, 380, 60, 20, "Run Mode", #80efbd, #0cb818);
+  runMode.draw();
 }
 
 public static int getLimit() {

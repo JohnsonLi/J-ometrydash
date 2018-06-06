@@ -33,7 +33,7 @@ public class Button {
     textSize(12);
     fill(#000000);
     textAlign(CENTER, CENTER);
-    text(label, width - (width - x - bWidth / 2), bHeight);
+    text(label, width - (width - x - bWidth / 2), height - (height - y - bHeight / 2));
 
     popMatrix();
   }
