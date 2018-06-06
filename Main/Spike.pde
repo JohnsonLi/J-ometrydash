@@ -9,7 +9,6 @@ public class Spike extends Block {
     pushMatrix();
     noStroke();
     fill(blockColor);
-    rotate(PI/2);
     triangle(x, y + blockHeight, x + blockWidth, y + blockHeight, x + blockWidth/2, y);
     popMatrix();
   }
