@@ -104,10 +104,12 @@ public void menu() {
 }
 
 public void keyPressed() {
+  //Scroll to the right
   if (keyCode == RIGHT && state.equals("EDIT")) {
     xoffset -= 5;
+  //Scroll to the left
   } else if (keyCode == LEFT && state.equals("EDIT")) {
-    //if (xoffset == 0) return;
+    if (xoffset == 0) return;
     xoffset += 5;
   } else {
     player.keyPressed(key);
