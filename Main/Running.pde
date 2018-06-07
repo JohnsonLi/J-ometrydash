@@ -14,14 +14,14 @@ public class Running extends PlayerMode {
     p.addVelocity(new Vector(0, GRAVITY));
     //Every 10 milliseconds it adds a new particle
     if (p.isOnGround() && millis() % 10 == 0) {
-      p.particles().add(new RunningParticle(p,new Vector(-.01 * random(2),-3 * random(2))));
+      p.particles().add(new RunningParticle(p, new Vector(-.01 * random(2), -3 * random(2))));
     }
     ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
     for (Particle p : p.particles()) {
       if (millis() % 2 == 0) {
         p.update();
       }
-      if (map.blockAt((int)p.getX(),(int)p.getY()) != null) {
+      if (map.blockAt((int)p.getX(), (int)p.getY()) != null) {
         particlesToRemove.add(p);
       }
       p.draw();
@@ -54,7 +54,7 @@ public class Running extends PlayerMode {
     int y = p.getY();
     int size = UNIT;
     ArrayList<Block> blocksToCheck = new ArrayList<Block>(); //Blocks to check
-   
+
     blocksToCheck.add(map.blockAt(x + size / 2 + 2, y - size / 2 + 2)); //top right
     blocksToCheck.add(map.blockAt(x - size / 4 + 2, y - size / 2 + 2)); //top left
     blocksToCheck.add(map.blockAt(x + size / 2 + 2, y + size / 2 - 2)); //bottom right

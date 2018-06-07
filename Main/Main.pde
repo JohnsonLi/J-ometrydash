@@ -14,9 +14,9 @@ static int limit = -20000;
 String state = "MENU";
 String currentlySelected = "BLOCK";
 
-Button edit,back;
-Button runMode,planeMode;
-Button block,spike,portal;
+Button edit, back;
+Button runMode, planeMode;
+Button block, spike, portal;
 
 public void setup() {
   map = new Map(BG_COLOR);
@@ -103,11 +103,11 @@ public void menu() {
 public void keyPressed() {
   //Scroll to the right
   if (keyCode == RIGHT && state.equals("EDIT")) {
-    xoffset -= 5;
-  //Scroll to the left
+    xoffset -= 15;
+    //Scroll to the left
   } else if (keyCode == LEFT && state.equals("EDIT")) {
     if (xoffset == 0) return;
-    xoffset += 5;
+    xoffset += 15;
   } else {
     player.keyPressed(key);
   }
@@ -126,7 +126,7 @@ public void mouseClicked() {
       map.addBlock(new Portal(UNIT * ((mouseX - xoffset) / UNIT), UNIT * ((mouseY / UNIT)-1), UNIT, 3 * UNIT, BLOCK_COLOR));
       break;
     }
-   }
+  }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY));
   }

@@ -15,10 +15,8 @@ public class Player {
 
   public void draw() {
     current.draw(); //Calls the more specific draw for UFO/Airplane
-    
+
     // Draws the particles
-    
-    
   }
 
   /**Updates the game*/
@@ -60,7 +58,9 @@ public class Player {
   public void keyPressed(int key) {
     current.keyPressed(key);
   }
-  public ArrayList<Particle> particles() {return particles;}
+  public ArrayList<Particle> particles() {
+    return particles;
+  }
   public int getX() {
     return x;
   }

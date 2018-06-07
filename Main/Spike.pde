@@ -26,7 +26,7 @@ public class Spike extends Block {
       }
     }
   }
-  
+
   public void editMap1(Block[][] map) {
     float tipX = x + blockWidth/2.;
     float tipY = y;

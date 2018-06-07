@@ -42,7 +42,6 @@ public class Block {
   }
 
   public void portalAction() {
-  
   }
   public int getX() {
     return x;

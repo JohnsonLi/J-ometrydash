@@ -10,14 +10,14 @@ public class Portal extends Block {
   public void draw() {
     pushMatrix();
     noStroke();
-    image(img,x,y,blockWidth,blockHeight);
+    image(img, x, y, blockWidth, blockHeight);
     popMatrix();
   }
-  
+
   public void portalAction() {
     if (!(player.getMode() instanceof Airplane)) {
       player.getVelocity().setY(0);
       player.setMode(new Airplane(player));
-    } 
+    }
   }
 }
