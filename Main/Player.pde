@@ -2,6 +2,7 @@ public class Player {
   int x, y;
   Vector velocity;
   PlayerMode current;
+  ArrayList<Particle> particles;
 
   /**Constructs a new player*/
   public Player() {
@@ -9,10 +10,28 @@ public class Player {
     y = 275 - UNIT/2;
     velocity = new Vector(2.5, 0);
     current = new Running(this);
+    particles = new ArrayList<Particle>();
   }
 
   public void draw() {
     current.draw(); //Calls the more specific draw for UFO/Airplane
+    
+    // Draws the particles
+    
+    ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
+    for (Particle p : particles) {
+      if (millis() % 2 == 0) {
+        p.update();
+      }
+      if (map.blockAt((int)p.getX(),(int)p.getY()) != null) {
+        particlesToRemove.add(p);
+      }
+      p.draw();
+    }
+    for (Particle p : particlesToRemove) {
+      particles.remove(p);
+      System.out.println(particles.size());
+    }
   }
 
   /**Updates the game*/
@@ -54,7 +73,7 @@ public class Player {
   public void keyPressed(int key) {
     current.keyPressed(key);
   }
-
+  public ArrayList<Particle> particles() {return particles;}
   public int getX() {
     return x;
   }

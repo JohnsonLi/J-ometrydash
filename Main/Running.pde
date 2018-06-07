@@ -12,6 +12,10 @@ public class Running extends PlayerMode {
   public void update() {
     super.update();
     p.addVelocity(new Vector(0, GRAVITY));
+    //Every 10 milliseconds it adds a new particle
+    if (p.isOnGround() && millis() % 10 == 0) {
+      p.particles().add(new RunningParticle(p,new Vector(-.01 * random(2),-3 * random(2))));
+    }
   }
 
   public void draw() {
