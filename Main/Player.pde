@@ -35,8 +35,10 @@ public class Player {
   public boolean isOnGround() {
     if (current.isColliding()) return false;
     for (int i = 0; i < UNIT; i++) {
-      if (map.blockAt((x - UNIT/2) + i, y + UNIT/2) != null) {
-        if (map.blockAt((x - UNIT/2) + i, y + UNIT/2).isHarmful()) {
+      Block b = map.blockAt((x - UNIT/2) + i, y + UNIT/2);
+      if (b != null) {
+        if (!b.isSolid()) return false; 
+        if (b.isHarmful()) {
           die();
           return false;
         }

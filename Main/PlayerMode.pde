@@ -19,6 +19,7 @@ public abstract class PlayerMode {
     //Sets the player Y to the top of the block it is under (if it is ontop of a block)
     Block block = map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2) ;
     if (block != null) {
+      if (!block.isSolid()) return;
       if (block.isHarmful()) {
         p.die();
         return;
