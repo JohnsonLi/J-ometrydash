@@ -29,6 +29,8 @@ public class Player {
     x = 0;
     y = 275 - UNIT / 2;
     xoffset = 0;
+    velocity = new Vector(2.5, 0);
+    current = new Running(this);
   }
 
   /** Checks all points on bottom*/
