@@ -18,20 +18,7 @@ public class Player {
     
     // Draws the particles
     
-    ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
-    for (Particle p : particles) {
-      if (millis() % 2 == 0) {
-        p.update();
-      }
-      if (map.blockAt((int)p.getX(),(int)p.getY()) != null) {
-        particlesToRemove.add(p);
-      }
-      p.draw();
-    }
-    for (Particle p : particlesToRemove) {
-      particles.remove(p);
-      System.out.println(particles.size());
-    }
+    
   }
 
   /**Updates the game*/

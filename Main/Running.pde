@@ -16,6 +16,19 @@ public class Running extends PlayerMode {
     if (p.isOnGround() && millis() % 10 == 0) {
       p.particles().add(new RunningParticle(p,new Vector(-.01 * random(2),-3 * random(2))));
     }
+    ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
+    for (Particle p : p.particles()) {
+      if (millis() % 2 == 0) {
+        p.update();
+      }
+      if (map.blockAt((int)p.getX(),(int)p.getY()) != null) {
+        particlesToRemove.add(p);
+      }
+      p.draw();
+    }
+    for (Particle pa : particlesToRemove) {
+      p.particles().remove(pa);
+    }
   }
 
   public void draw() {

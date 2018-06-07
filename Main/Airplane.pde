@@ -2,8 +2,12 @@ public class Airplane extends PlayerMode{
   float theta;
   final float GRAVITY = UNIT/600.;
   PImage planeImg = loadImage("images/airplane.png");
+  Particle particle;
+  
   public Airplane(Player p) {
     super(p);
+    this.particle = new Trail(p, #FFFF00);
+    
   }
   public void update() {
     super.update();
@@ -13,6 +17,8 @@ public class Airplane extends PlayerMode{
     } else {
       p.addVelocity(new Vector(0, GRAVITY));
     }
+    particle.update();
+    particle.draw();
   }
   
   
@@ -25,6 +31,8 @@ public class Airplane extends PlayerMode{
       image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
       image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
+    particle.update();
+    particle.draw();
   }
   
   public ArrayList<Block> blocksToCheck() {

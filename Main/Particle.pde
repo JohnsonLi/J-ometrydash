@@ -1,6 +1,6 @@
 public abstract class Particle {
   
-  private Player p;
+  Player p;
   float x,y;
   
   public Particle(Player p) {
