@@ -75,10 +75,13 @@ public void play() {
 
 public void edit() {
   pushMatrix();
+
   translate(xoffset, 0);
   map.draw();
   drawGrid();
+
   popMatrix();
+
   back.draw();
   editButtons();
 
@@ -162,22 +165,30 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && save.isHovering()) {
       map.save();
+      //textSize(14);
+      //fill(#000000);
+      //textAlign(CENTER, CENTER);
+      //text("MAP SAVED" + currentlySelected, 80, 80);
+      //delay(3000);
       return;
     }
     if (mouseButton == LEFT && load.isHovering()) {
       map.load();
+      //textSize(14);
+      //fill(#000000);
+      //textAlign(CENTER, CENTER);
+      //text("MAP LOADED" + currentlySelected, 120, 380);
+      //delay(3000);
       return;
     }
   }
   if (state.equals("PLAY")) {
     if (mouseButton == LEFT && runMode.isHovering()) {
       player.setMode(new Running(player));
-      player.die();
       return;
     }
     if (mouseButton == LEFT && planeMode.isHovering()) {
       player.setMode(new Airplane(player));
-      player.die();
       return;
     }
   }

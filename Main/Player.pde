@@ -75,7 +75,7 @@ public class Player {
     this.y = y;
   }
   public void setMode(PlayerMode c) {
-    mode = c;
+    current = c;
   }
   public PlayerMode getMode() {
     return current;

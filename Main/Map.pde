@@ -50,7 +50,7 @@ public class Map {
         String[] pieces = split(line, " ");
         //System.out.println(Arrays.toString(pieces));
         //System.out.println(pieces[0]);
-        //addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
       }
       reader.close();
     } 
