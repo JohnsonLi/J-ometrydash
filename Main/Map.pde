@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
@@ -41,6 +43,26 @@ public class Map {
   }
 
   public void load() {
+    BufferedReader reader = createReader("level1.txt");
+    String line = null;
+    try {
+      while ((line = reader.readLine()) != null) {
+        String[] pieces = split(line, " ");
+        //System.out.println(Arrays.toString(pieces));
+        //System.out.println(pieces[0]);
+        //addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+      }
+      reader.close();
+    } 
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void removeBlocks() {
+    for (Block b : blocks) {
+      removeBlock(b);
+    }
   }
 
   //Draws every block and the colors
