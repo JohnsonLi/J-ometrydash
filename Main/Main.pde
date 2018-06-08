@@ -184,10 +184,12 @@ public void mouseClicked() {
   }
   if (state.equals("PLAY")) {
     if (mouseButton == LEFT && runMode.isHovering()) {
+      player.die();
       player.setMode(new Running(player));
       return;
     }
     if (mouseButton == LEFT && planeMode.isHovering()) {
+      player.die();
       player.setMode(new Airplane(player));
       return;
     }
