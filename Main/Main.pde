@@ -13,6 +13,7 @@ static int limit = -20000;
 // State of the program
 String state = "MENU";
 String currentlySelected = "BLOCK";
+boolean debug = true;
 
 Button edit, back;
 Button runMode, planeMode;
@@ -63,8 +64,11 @@ public void play() {
 
   popMatrix();
 
-  edit.draw();
-  debugButtons();
+  if (debug) {
+    edit.draw();
+    debugButtons();
+  }
+
   if (xoffset < limit) return;
   xoffset-=2.5;
 }

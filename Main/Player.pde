@@ -2,6 +2,7 @@ public class Player {
   int x, y;
   Vector velocity;
   PlayerMode current;
+  PlayerMode mode = new Running(this);
   ArrayList<Particle> particles;
 
   /**Constructs a new player*/
@@ -9,7 +10,7 @@ public class Player {
     x = 0;
     y = 275 - UNIT/2;
     velocity = new Vector(2.5, 0);
-    current = new Running(this);
+    current = mode;
     particles = new ArrayList<Particle>();
   }
 
@@ -34,7 +35,7 @@ public class Player {
     y = 275 - UNIT / 2;
     xoffset = 0;
     velocity = new Vector(2.5, 0);
-    current = new Running(this);
+    current = mode;
   }
 
   /** Checks all points on bottom*/
@@ -74,7 +75,7 @@ public class Player {
     this.y = y;
   }
   public void setMode(PlayerMode c) {
-    current = c;
+    mode = c;
   }
   public PlayerMode getMode() {
     return current;
