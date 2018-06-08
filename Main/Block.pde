@@ -55,6 +55,9 @@ public class Block {
   public int getHeight() {
     return blockHeight;
   }
+  public int getColor() {
+    return blockColor;
+  }
   public boolean isHarmful() {
     return harmful;
   }

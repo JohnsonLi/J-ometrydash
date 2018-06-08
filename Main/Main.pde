@@ -15,7 +15,7 @@ String state = "MENU";
 String currentlySelected = "BLOCK";
 boolean debug = true;
 
-Button edit, back;
+Button edit, back, save;
 Button runMode, planeMode;
 Button block, spike, portal;
 
@@ -160,6 +160,10 @@ public void mouseClicked() {
       currentlySelected = "PORTAL";
       return;
     }
+    if (mouseButton == LEFT && save.isHovering()) {
+      map.save();
+      return;
+    }
   }
   if (state.equals("PLAY")) {
     if (mouseButton == LEFT && runMode.isHovering()) {
@@ -211,9 +215,11 @@ public void editButtons() {
   block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
   spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
   portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
+  save = new Button(30, 320, 60, 20, "SAVE", #80efbd, #0cb818);
   block.draw();
   spike.draw();
   portal.draw();
+  save.draw();
 }
 
 public static int getLimit() {

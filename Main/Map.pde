@@ -2,6 +2,7 @@ public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
   int bgColor, floorColor, blockColor;
+  PrintWriter output;
 
   /** Constructs the map */
   public Map(int bgColor) {
@@ -28,6 +29,18 @@ public class Map {
     if (b != null) {
       b.editMap1(map);
     }
+  }
+
+  public void save() {
+    output = createWriter("level1.txt"); 
+    for (Block b : blocks) {
+      output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor());
+    }   
+    output.flush(); 
+    output.close();
+  }
+
+  public void load() {
   }
 
   //Draws every block and the colors
