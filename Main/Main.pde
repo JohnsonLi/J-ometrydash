@@ -111,8 +111,6 @@ public void keyPressed() {
   } else if (keyCode == LEFT && state.equals("EDIT")) {
     if (xoffset == 0) return;
     xoffset += 15;
-  } else {
-    player.keyPressed(key);
   }
 }
 

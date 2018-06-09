@@ -39,7 +39,6 @@ public abstract class PlayerMode {
     return false;
   }
   public abstract ArrayList<Block> blocksToCheck();
-  public abstract void keyPressed(int key);
   public abstract void draw();
 
   public abstract void reset();

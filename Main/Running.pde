@@ -10,6 +10,9 @@ public class Running extends PlayerMode {
   }
 
   public void update() {
+    if (keyPressed && key == ' ' && p.isOnGround()) {
+      p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
+    }
     super.update();
     p.addVelocity(new Vector(0, GRAVITY));
     //Every 10 milliseconds it adds a new particle
@@ -60,11 +63,6 @@ public class Running extends PlayerMode {
     blocksToCheck.add(map.blockAt(x + size / 2 + 2, y + size / 2 - 2)); //bottom right
     blocksToCheck.add(map.blockAt(x + size / 2 + 1, y)); //right middle
     return blocksToCheck;
-  }
-  public void keyPressed(int key) {
-    if (key == ' ' && p.isOnGround()) {
-      p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
-    }
   }
 
   public void reset() {

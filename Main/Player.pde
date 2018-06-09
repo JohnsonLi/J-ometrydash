@@ -60,9 +60,6 @@ public class Player {
   }
 
 
-  public void keyPressed(int key) {
-    current.keyPressed(key);
-  }
   public ArrayList<Particle> particles() {
     return particles;
   }

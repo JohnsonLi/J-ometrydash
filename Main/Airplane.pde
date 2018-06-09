@@ -44,8 +44,6 @@ public class Airplane extends PlayerMode {
     return blocksToCheck;
   }
 
-  public void keyPressed(int key) {
-  }
   public void reset() {
   }
 }
