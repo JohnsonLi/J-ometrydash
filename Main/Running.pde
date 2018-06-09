@@ -44,7 +44,7 @@ public class Running extends PlayerMode {
     rotate(theta);
     noStroke();
     imageMode(CORNER);
-    image(img, -UNIT/2, -UNIT/2, UNIT, UNIT);
+    image(img, -UNIT/2, -UNIT/2);
 
     popMatrix();
   }

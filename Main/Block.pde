@@ -4,6 +4,7 @@ public class Block {
   int x, y;
   int blockColor;
   boolean harmful, isSolid;
+  PImage img;
 
   /** Constructs new block*/
   public Block(int x, int y, int blockWidth, int blockHeight, int blockColor) {
@@ -13,6 +14,7 @@ public class Block {
     this.x = x;
     this.y = y;
     this.isSolid = true;
+    img = loadImage("images/block.png");
   }
 
   /** Draws a square at x,y coords*/
@@ -20,7 +22,7 @@ public class Block {
     pushMatrix();
     noStroke();
     fill(blockColor);
-    rect(x, y, blockWidth, blockHeight);
+    image(img,x, y);
     popMatrix();
   }
 

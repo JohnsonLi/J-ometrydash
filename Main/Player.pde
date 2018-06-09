@@ -15,12 +15,12 @@ public class Player {
 
   public void draw() {
     current.draw(); //Calls the more specific draw for UFO/Airplane
-    fill(255,255,255,150);
-    rect(x - 75, 300, 100, 2);
-    fill(255,255,255,100);
-    rect(x - 100, 300, 25, 2);
-    fill(255,255,255,100);
-    rect(x + 25, 300, 25, 2);
+    fill(150,100,255,200);
+    rect(x - 25, 300, 100, 2);
+    fill(150,100,255,175);
+    rect(x + 75, 300, 25, 2);
+    fill(150,100,255,175);
+    rect(x - 50, 300, 25, 2);
     
   }
 
