@@ -4,7 +4,9 @@ public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
   int bgColor, floorColor, blockColor;
+
   PrintWriter output;
+  boolean typing = false;
 
   /** Constructs the map */
   public Map(int bgColor) {
@@ -62,14 +64,6 @@ public class Map {
             addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
             break;
         }
-        
-        //if(type == 0){
-        //  addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-        //} else if (type == 1){
-        //  addBlock(new Spike(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-        //} else if (type == 2){
-        //  addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-        //}
       }
       reader.close();
     } 

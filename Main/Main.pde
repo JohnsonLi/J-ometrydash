@@ -14,6 +14,7 @@ static int limit = -20000;
 String state = "MENU";
 String currentlySelected = "BLOCK";
 boolean debug = true;
+boolean showingText = false;
 
 Button edit, back, save, load;
 Button runMode, planeMode;
@@ -50,6 +51,7 @@ public void draw() {
     break;
   }
 }
+
 
 public void play() {
 
@@ -89,6 +91,18 @@ public void edit() {
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("current obstacle: " + currentlySelected, 120, 380);
+
+  if (mouseButton == LEFT && save.isHovering() && showingText == true) {
+    textSize(25);
+    fill(#000000);
+    textAlign(CENTER, CENTER);
+    text("MAP SAVED", width / 2, 100);
+  } else if (mouseButton == LEFT && load.isHovering() && showingText == true){
+  textSize(25);
+    fill(#000000);
+    textAlign(CENTER, CENTER);
+    text("MAP LOADED", width / 2, 100);
+  }
 }
 
 public void menu() {
@@ -165,20 +179,12 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && save.isHovering()) {
       map.save();
-      //textSize(14);
-      //fill(#000000);
-      //textAlign(CENTER, CENTER);
-      //text("MAP SAVED" + currentlySelected, 80, 80);
-      //delay(3000);
+      showingText = true;
       return;
     }
     if (mouseButton == LEFT && load.isHovering()) {
       map.load();
-      //textSize(14);
-      //fill(#000000);
-      //textAlign(CENTER, CENTER);
-      //text("MAP LOADED" + currentlySelected, 120, 380);
-      //delay(3000);
+      showingText = true;
       return;
     }
   }
