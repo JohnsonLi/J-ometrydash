@@ -2,11 +2,13 @@ public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
   int bgColor, floorColor, blockColor;
+  
 
   /** Constructs the map */
   public Map(int bgColor) {
     this.bgColor = bgColor;
     map = new Block[height][width + (-1 * Main.getLimit())];
+    
   }
 
   /** Returns the block at specific coords */
@@ -32,7 +34,7 @@ public class Map {
 
   //Draws every block and the colors
   public void draw() {
-    background(bgColor);
+    //background(bgColor);
     for (Block b : blocks) {
       b.draw();
     }

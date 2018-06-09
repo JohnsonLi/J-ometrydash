@@ -7,7 +7,7 @@ public class Player {
   /**Constructs a new player*/
   public Player() {
     x = 0;
-    y = 275 - UNIT/2;
+    y = 300 - UNIT/2;
     velocity = new Vector(2.5, 0);
     current = new Running(this);
     particles = new ArrayList<Particle>();
@@ -36,7 +36,7 @@ public class Player {
   /** Resets the coords*/
   public void die() {
     x = 0;
-    y = 275 - UNIT / 2;
+    y = 300 - UNIT / 2;
     xoffset = 0;
     velocity = new Vector(2.5, 0);
     current = new Running(this);

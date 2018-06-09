@@ -6,14 +6,15 @@ public class Running extends PlayerMode {
 
   public Running(Player p) {
     super(p);
-    theta = 3 * PI / 2;
+    theta = 0;
   }
 
   public void update() {
+    
+    super.update();
     if (keyPressed && key == ' ' && p.isOnGround()) {
       p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
     }
-    super.update();
     p.addVelocity(new Vector(0, GRAVITY));
     //Every 10 milliseconds it adds a new particle
     if (p.isOnGround() && millis() % 10 == 0) {
@@ -32,6 +33,7 @@ public class Running extends PlayerMode {
     for (Particle pa : particlesToRemove) {
       p.particles().remove(pa);
     }
+    
   }
 
   public void draw() {

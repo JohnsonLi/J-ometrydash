@@ -11,6 +11,7 @@ PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER;
 int xoffset = 0;
 static int limit = -20000;
 PImage floorImg;
+Background background;
 
 // State of the program
 String state = "MENU";
@@ -25,7 +26,7 @@ public void setup() {
   floorImg = loadImage("images/floor.jpg");
   //floor
   map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
-
+  background = new Background(loadImage("images/background.png"));
   BACKGROUND_PIC = loadImage("images/bg.png");
   PLAY = loadImage("images/play.png");
   QUIT = loadImage("images/quit.png");
@@ -54,8 +55,7 @@ public void draw() {
 }
 
 public void play() {
-
-
+  background.draw();
   pushMatrix();
   if (xoffset <= -200) {
     translate(xoffset+200, 0);
@@ -65,7 +65,7 @@ public void play() {
   player.draw();
 
   popMatrix();
-
+  
   edit.draw();
   debugButtons();
   if (xoffset < limit) return;
