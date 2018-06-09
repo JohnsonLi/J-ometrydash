@@ -1,4 +1,5 @@
 public class Spike extends Block {
+  int type = 1;
 
   public Spike(int x, int y, int base, int bheight, int bcolor) {
     super(x, y, base, bheight, bcolor);
@@ -39,5 +40,9 @@ public class Spike extends Block {
         map[(int)currentY][j] = null;
       }
     }
+  }
+
+  public int getType() {
+    return type;
   }
 }

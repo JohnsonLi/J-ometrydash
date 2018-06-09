@@ -36,7 +36,8 @@ public class Map {
   public void save() {
     output = createWriter("level1.txt"); 
     for (Block b : blocks) {
-      output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor());
+      output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
+      System.out.println(b.getType());
     }   
     output.flush(); 
     output.close();
@@ -48,9 +49,27 @@ public class Map {
     try {
       while ((line = reader.readLine()) != null) {
         String[] pieces = split(line, " ");
-        //System.out.println(Arrays.toString(pieces));
-        //System.out.println(pieces[0]);
-        addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        int type = Integer.parseInt(pieces[5]);
+        System.out.println(type);
+        //switch (type){
+        //  case 0:
+        //    addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        //    break;
+        //  case 1:
+        //    addBlock(new Spike(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        //    break;
+        //  //case 2:
+        //  //  addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        //  //  break;
+        //}
+        
+        if(type == 0){
+          addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        } else if (type == 1){
+          addBlock(new Spike(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        } else if (type == 2){
+          addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+        }
       }
       reader.close();
     } 

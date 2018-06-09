@@ -4,6 +4,11 @@ public class Block {
   int x, y;
   int blockColor;
   boolean harmful, isSolid;
+  
+  //0: block
+  //1: spike
+  //2: portal
+  int type;
 
   /** Constructs new block*/
   public Block(int x, int y, int blockWidth, int blockHeight, int blockColor) {
@@ -13,6 +18,7 @@ public class Block {
     this.x = x;
     this.y = y;
     this.isSolid = true;
+    this.type = 0;
   }
 
   /** Draws a square at x,y coords*/
@@ -63,5 +69,8 @@ public class Block {
   }
   public boolean isSolid() {
     return isSolid;
+  }
+  public int getType(){
+    return type;
   }
 }
