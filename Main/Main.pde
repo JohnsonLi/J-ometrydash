@@ -23,7 +23,7 @@ Button block, spike, portal;
 
 public void setup() {
   map = new Map(BG_COLOR);
-  floorImg = loadImage("images/floor.jpg");
+  floorImg = loadImage("images/floor.png");
   //floor
   map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
   background = new Background(loadImage("images/background.png"));
@@ -75,9 +75,11 @@ public void play() {
 public void edit() {
   pushMatrix();
   translate(xoffset, 0);
+  background.draw();
   map.draw();
   drawGrid();
   popMatrix();
+  
   back.draw();
   editButtons();
 
