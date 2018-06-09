@@ -37,10 +37,10 @@ public class Map {
   }
 
   public void save() {
-    typing = true;
-    System.out.println("TYPING");
+    //typing = true;
+    //System.out.println("TYPING");
     if (typing == false) {
-      output = createWriter(input); 
+      output = createWriter("level1.txt"); 
       for (Block b : blocks) {
         output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
         //System.out.println(b.getType());
@@ -110,8 +110,8 @@ public class Map {
 
   //Draws every block and the colors
   public void draw() {
-    System.out.println(typing);
-    System.out.println(input);
+    //System.out.println(typing);
+    //System.out.println(input);
     background(bgColor);
     for (Block b : blocks) {
       b.draw();

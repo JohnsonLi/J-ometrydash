@@ -19,6 +19,7 @@ boolean showingText = false;
 Button edit, back, clear, save, load;
 Button runMode, planeMode;
 Button block, spike, portal;
+Button debugB;
 
 public void setup() {
   map = new Map(BG_COLOR);
@@ -119,6 +120,9 @@ public void menu() {
   } else {
     image(QUIT, width / 2, 325);
   }
+  
+  debugB = new Button(950, 390, 60, 20, "Debug", #80efbd, #0cb818);
+  debugB.draw();
 }
 
 public void keyPressed() {
