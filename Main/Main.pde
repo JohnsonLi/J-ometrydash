@@ -107,6 +107,8 @@ public void edit() {
 }
 
 public void menu() {
+  String debugStatus;
+  debugStatus = debug ? "ON" : "OFF";
   background(BACKGROUND_PIC);
   imageMode(CENTER);
   if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
@@ -121,6 +123,10 @@ public void menu() {
     image(QUIT, width / 2, 325);
   }
   
+  fill(#000000);
+  textAlign(CENTER, CENTER);
+  text("Debug: " + debugStatus, 980, 380);
+
   debugB = new Button(950, 390, 60, 20, "Debug", #80efbd, #0cb818);
   debugB.draw();
 }
@@ -197,7 +203,7 @@ public void mouseClicked() {
       return;
     }
   }
-  if (state.equals("PLAY")) {
+  if (state.equals("PLAY") && debug) {
     if (mouseButton == LEFT && runMode.isHovering()) {
       player.die();
       player.setMode(new Running(player));
@@ -217,6 +223,9 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
       exit();
+    }
+    if(mouseButton == LEFT && debugB.isHovering()){
+      debug = !debug;
     }
   }
 }
