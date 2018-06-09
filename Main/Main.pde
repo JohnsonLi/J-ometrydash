@@ -16,7 +16,7 @@ String currentlySelected = "BLOCK";
 boolean debug = true;
 boolean showingText = false;
 
-Button edit, back, save, load;
+Button edit, back, clear, save, load;
 Button runMode, planeMode;
 Button block, spike, portal;
 
@@ -97,8 +97,8 @@ public void edit() {
     fill(#000000);
     textAlign(CENTER, CENTER);
     text("MAP SAVED", width / 2, 100);
-  } else if (mouseButton == LEFT && load.isHovering() && showingText == true){
-  textSize(25);
+  } else if (mouseButton == LEFT && load.isHovering() && showingText == true) {
+    textSize(25);
     fill(#000000);
     textAlign(CENTER, CENTER);
     text("MAP LOADED", width / 2, 100);
@@ -149,7 +149,7 @@ public void mouseClicked() {
     }
   }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
-    map.removeBlock(map.blockAt(mouseX - xoffset, mouseY));
+    map.removeBlock(map.blockAt(mouseX - xoffset, mouseY), map.getBlocks());
   }
   if (mouseButton == CENTER) {
     player.die();
@@ -185,6 +185,11 @@ public void mouseClicked() {
     if (mouseButton == LEFT && load.isHovering()) {
       map.load();
       showingText = true;
+      return;
+    }
+    if (mouseButton == LEFT && clear.isHovering()) {
+      map.removeBlocks();
+      System.out.println("ef");
       return;
     }
   }
@@ -240,11 +245,13 @@ public void editButtons() {
   portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
   save = new Button(30, 320, 60, 20, "SAVE", #80efbd, #0cb818);
   load = new Button(30, 350, 60, 20, "LOAD", #80efbd, #0cb818);
+  clear = new Button(100, 320, 60, 20, "CLEAR", #80efbd, #0cb818);
   block.draw();
   spike.draw();
   portal.draw();
   save.draw();
   load.draw();
+  clear.draw();
 }
 
 public static int getLimit() {

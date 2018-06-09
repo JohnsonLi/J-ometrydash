@@ -28,8 +28,8 @@ public class Map {
     b.editMap(map);
   }
 
-  public void removeBlock(Block b) {
-    blocks.remove(b);
+  public void removeBlock(Block b, ArrayList<Block> blocklist) {
+    blocklist.remove(b);
     if (b != null) {
       b.editMap1(map);
     }
@@ -47,22 +47,23 @@ public class Map {
 
   public void load() {
     BufferedReader reader = createReader("level1.txt");
+    removeBlocks();
     String line = null;
     try {
       while ((line = reader.readLine()) != null) {
         String[] pieces = split(line, " ");
         int type = Integer.parseInt(pieces[5]);
         //System.out.println(type);
-        switch (type){
-          case 0:
-            addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-            break;
-          case 1:
-            addBlock(new Spike(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-            break;
-          case 2:
-            addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
-            break;
+        switch (type) {
+        case 0:
+          addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+          break;
+        case 1:
+          addBlock(new Spike(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+          break;
+        case 2:
+          addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
+          break;
         }
       }
       reader.close();
@@ -73,9 +74,17 @@ public class Map {
   }
 
   public void removeBlocks() {
+    //Can't edit concurrently so do it on a copy and put it back
+    ArrayList<Block> copy = new ArrayList<Block>(blocks);
     for (Block b : blocks) {
-      removeBlock(b);
+      copy.add(b);
     }
+    for(Block b : copy){
+      removeBlock(b, blocks);
+    }
+    
+    // Put floor back
+    addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
   }
 
   //Draws every block and the colors
@@ -84,5 +93,9 @@ public class Map {
     for (Block b : blocks) {
       b.draw();
     }
+  }
+  
+  public  ArrayList<Block> getBlocks(){
+    return blocks;
   }
 }

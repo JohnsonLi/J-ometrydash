@@ -4,7 +4,7 @@ public class Block {
   int x, y;
   int blockColor;
   boolean harmful, isSolid;
-  
+
   //0: block
   //1: spike
   //2: portal
@@ -70,7 +70,7 @@ public class Block {
   public boolean isSolid() {
     return isSolid;
   }
-  public int getType(){
+  public int getType() {
     return type;
   }
 }
