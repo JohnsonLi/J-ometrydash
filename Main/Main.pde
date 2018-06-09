@@ -4,11 +4,13 @@ final int UNIT = 30;
 final int FLOOR_HEIGHT = 4;
 final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
+
 final int BLOCK_COLOR = #fffacd;
 PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER;
 
 int xoffset = 0;
 static int limit = -20000;
+PImage floorImg;
 
 // State of the program
 String state = "MENU";
@@ -20,6 +22,7 @@ Button block, spike, portal;
 
 public void setup() {
   map = new Map(BG_COLOR);
+  floorImg = loadImage("images/floor.jpg");
   //floor
   map.addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
 

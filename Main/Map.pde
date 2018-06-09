@@ -36,5 +36,9 @@ public class Map {
     for (Block b : blocks) {
       b.draw();
     }
+    //Draws the actual floor
+    image(floorImg, ((-1 * xoffset / 2000) - 1) * 2000., 300);
+    image(floorImg, (-1 * xoffset / 2000) * 2000., 300);
+    image(floorImg, ((-1 * xoffset / 2000) + 1) * 2000., 300);
   }
 }

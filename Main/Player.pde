@@ -15,8 +15,13 @@ public class Player {
 
   public void draw() {
     current.draw(); //Calls the more specific draw for UFO/Airplane
-
-    // Draws the particles
+    fill(255,255,255,150);
+    rect(x - 75, 300, 100, 2);
+    fill(255,255,255,100);
+    rect(x - 100, 300, 25, 2);
+    fill(255,255,255,100);
+    rect(x + 25, 300, 25, 2);
+    
   }
 
   /**Updates the game*/
