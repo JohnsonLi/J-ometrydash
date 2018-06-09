@@ -5,7 +5,6 @@ public class Background {
     backgroundImg = img;
   }
   public void draw() {
-
     //if ((xoffset / 800) - xoffset/50. > 0)
     image(backgroundImg, 0, 0);
     image(backgroundImg, 800, 0);

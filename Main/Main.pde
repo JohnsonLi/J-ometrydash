@@ -73,9 +73,9 @@ public void play() {
 }
 
 public void edit() {
+  background.draw();
   pushMatrix();
   translate(xoffset, 0);
-  background.draw();
   map.draw();
   drawGrid();
   popMatrix();
