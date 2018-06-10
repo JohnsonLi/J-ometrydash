@@ -1,6 +1,8 @@
 public class Player {
   int x, y;
-  Vector velocity;
+  Vector velocity, endGameVelocity;
+  Particle endGameParticle;
+  float endGameRotation;
   PlayerMode current = new Running(this);
   ArrayList<Particle> particles;
 
@@ -10,17 +12,23 @@ public class Player {
     y = 300 - UNIT/2;
     velocity = new Vector(2.5, 0);
     particles = new ArrayList<Particle>();
+    endGameVelocity = new Vector(2, -5);
+    endGameParticle = new Trail(0,0, #66ffcc,300);
+    endGameRotation = 0;
   }
 
   public void draw() {
     current.draw(); //Calls the more specific draw for UFO/Airplane
-    fill(150,100,255,200);
+    fill(150, 100, 255, 200);
     rect(x - 25, 300, 100, 2);
-    fill(150,100,255,175);
+    fill(150, 100, 255, 175);
     rect(x + 75, 300, 25, 2);
-    fill(150,100,255,175);
+    fill(150, 100, 255, 175);
     rect(x - 50, 300, 25, 2);
-    
+  }
+  
+  public void draw(boolean b) {
+    current.draw(b);
   }
 
   /**Updates the game*/
@@ -75,6 +83,12 @@ public class Player {
   public void setY(int y) {
     this.y = y;
   }
+  public void addX(int x) {
+    this.x += x;
+  }
+  public void addY(int y) {
+    this.y += y;
+  }
   public void setMode(PlayerMode c) {
     current = c;
   }
@@ -86,5 +100,8 @@ public class Player {
   }
   public Vector getVelocity() {
     return velocity;
+  }
+  public void setVelocity(Vector v) {
+    velocity = v;
   }
 }

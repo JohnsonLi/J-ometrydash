@@ -6,10 +6,11 @@ public class Airplane extends PlayerMode {
 
   public Airplane(Player p) {
     super(p);
-    this.particle = new Trail(p, #FFFF00);
+    this.particle = new Trail(p, #FFFF00, 100);
   }
   public void update() {
     super.update();
+
     //If spacebar is held, goes up
     if (keyPressed == true && key == ' ') {
       p.addVelocity(new Vector(0, -GRAVITY));
@@ -20,8 +21,7 @@ public class Airplane extends PlayerMode {
 
 
   public void draw() {
-    particle.update();
-    particle.draw();
+
     pushMatrix();
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     noStroke();
@@ -31,9 +31,27 @@ public class Airplane extends PlayerMode {
     image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
     //image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
-    
   }
 
+  public void draw(boolean b) {
+    if (b) {
+      draw();
+    } else {
+      pushMatrix();
+      player.endGameRotation = player.endGameRotation * 1.01 + PI/40;
+      rotate(player.endGameRotation);
+      translate(p.getX(), p.getY());
+      imageMode(CORNER);
+      image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
+      image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
+      popMatrix();
+    }
+  }
+
+  public void updateParticles() {
+    particle.update();
+    particle.draw();
+  }
   public ArrayList<Block> blocksToCheck() {
     int x = p.getX();
     int y = p.getY();

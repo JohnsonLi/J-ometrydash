@@ -10,7 +10,7 @@ public class Running extends PlayerMode {
   }
 
   public void update() {
-    
+
     super.update();
     if (keyPressed && key == ' ' && p.isOnGround()) {
       p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
@@ -20,22 +20,23 @@ public class Running extends PlayerMode {
     if (p.isOnGround() && millis() % 10 == 0) {
       p.particles().add(new RunningParticle(p, new Vector(-1 * random(2), -.5 * random(2))));
     }
+  }
+
+  public void updateParticles() {
     ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
     for (Particle p : p.particles()) {
       if (millis() % 2 == 0) {
         p.update();
       }
+      p.draw();
       if (((RunningParticle)p).getLifetime() < 0) {
         particlesToRemove.add(p);
       }
-      p.draw();
     }
     for (Particle particle : particlesToRemove) {
       p.particles().remove(particle);
     }
-    
   }
-
   public void draw() {
     pushMatrix();
     if (!p.isOnGround()) {
@@ -52,6 +53,20 @@ public class Running extends PlayerMode {
     image(img, -UNIT/2, -UNIT/2);
 
     popMatrix();
+  }
+
+  public void draw(boolean b) {
+    if (b) {
+      draw();
+    } else {
+      pushMatrix();
+      translate(p.getX(), p.getY());
+      player.endGameRotation = player.endGameRotation * 1.01 + PI/100;
+      rotate(player.endGameRotation);
+      imageMode(CORNER);
+      image(img, -UNIT/2, -UNIT/2);
+      popMatrix();
+    }
   }
 
   public ArrayList<Block> blocksToCheck() {

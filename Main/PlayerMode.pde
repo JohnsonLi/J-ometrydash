@@ -26,8 +26,11 @@ public abstract class PlayerMode {
       }
       p.setY(map.blockAt(p.getX() + UNIT / 2, p.getY() + UNIT / 2).getY() - UNIT / 2);
     }
+    updateParticles();
   }
-
+  
+  public abstract void draw(boolean b);
+  
   public boolean isColliding() {
     for (Block b : blocksToCheck()) {
       if (b != null) {
@@ -40,6 +43,6 @@ public abstract class PlayerMode {
   }
   public abstract ArrayList<Block> blocksToCheck();
   public abstract void draw();
-
+  public abstract void updateParticles();
   public abstract void reset();
 }

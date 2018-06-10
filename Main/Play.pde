@@ -9,7 +9,7 @@ public class Play {
     } //Lets the block travel to its position before screen scrolls
     map.draw();
 
-    if (player.getX() > limit * -1) {
+    if (player.getX() > limit * -1 + width/4) {
       state = "END";
     } else { 
       player.update();

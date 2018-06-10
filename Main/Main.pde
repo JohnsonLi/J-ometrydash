@@ -71,6 +71,8 @@ public void draw() {
     menu();
     break;
   case "END":
+    end();
+    break;
   }
 }
 
@@ -86,6 +88,24 @@ public void edit() {
 public void menu() {
   menuClass.menu();
 }
+
+public void end() {
+  background.draw();
+  map.draw();
+  pushMatrix();
+  translate(xoffset+200, 0);
+  player.draw(false);
+  Vector v = player.endGameVelocity;
+  player.addX((int)v.getX());
+  player.addY((int)v.getY());
+  v.add(new Vector(.02,.05));
+  player.endGameParticle.update();
+  player.endGameParticle.draw();
+  popMatrix();
+  
+
+}
+
 
 public void keyPressed() {
   //Scroll to the right
