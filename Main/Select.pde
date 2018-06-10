@@ -5,13 +5,14 @@ public class Select {
   public Select() {
     levels = new ArrayList<Button>();
     File[] files = listFiles("levels");
-    int i = 0;
+    int i = 50;
     for (File f : files) {
-      levels.add(new Button(450, i, 100, 50, f.getName()));
+      levels.add(new Button(width / 2 - 300 / 2, i, 300, 90, f.getName().substring(0,f.getName().length() - 4), 29, #FFFACD));
       i += 75;
     }
   }
   public void select() {
+    imageMode(CORNER);
     image(bg,0,0);
     for (Button b : levels) {
       b.draw();
@@ -25,7 +26,14 @@ public class Select {
        }
       }
       
-    } 
+    }
+    
+    imageMode(CENTER);
+    if ((mouseX < 111 + 5 && mouseY > height - 68 / 2)) {
+      image(BACK_HOVER, 111 / 2 + 5, height - 68 / 2);
+    } else {
+      image(BACK, 111  / 2 + 5, height - 68 / 2);
+    }
   }
   
 }

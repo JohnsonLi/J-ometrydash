@@ -1,9 +1,11 @@
 public class Button {
   float x, y, bWidth, bHeight;
   int textSize;
+  int bColor;
   String label;
+  boolean isColored = false;
 
-  PImage buttonImg = loadImage("images/button.png");
+  PImage buttonImg;
 
   public Button(float x, float y, float bWidth, float bHeight, String label) {
     this.x = x;
@@ -12,6 +14,7 @@ public class Button {
     this.bHeight = bHeight;
     this.label =label;
     this.textSize = 14;
+    buttonImg = loadImage("images/button.png");
     textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
 
@@ -22,6 +25,20 @@ public class Button {
     this.bHeight = bHeight;
     this.label =label;
     this.textSize = textSize;
+    buttonImg = loadImage("images/button.png");
+    textFont(createFont("caveatbrush-regular.ttf", textSize));
+  }
+
+  public Button(float x, float y, float bWidth, float bHeight, String label, int textSize, int bColor) {
+    this.x = x;
+    this.y = y;
+    this.bWidth = bWidth;
+    this.bHeight = bHeight;
+    this.label =label;
+    this.textSize = textSize;
+    isColored = true;
+    this.bColor = bColor;
+    buttonImg =loadImage("images/levelbutton.png");
     textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
 
@@ -39,11 +56,13 @@ public class Button {
     pushMatrix(); 
 
     image(buttonImg, x, y, bWidth, bHeight);
-
     textSize(textSize);
     fill(#000000);
     textAlign(CENTER, CENTER);
-    text(label, width - (width - x - bWidth / 2), height - (height - y - bHeight / 2));
+    if(isColored){
+      fill(bColor);
+    }
+    text(label, width - (width - x - bWidth / 2), height - (height - y - bHeight / 2.5));
 
     popMatrix();
   }

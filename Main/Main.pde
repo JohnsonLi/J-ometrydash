@@ -6,7 +6,7 @@ final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 
 final int BLOCK_COLOR = #fffacd;
-PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER, LEVEL_COMPLETE;
+PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER, LEVEL_COMPLETE, BACK, BACK_HOVER, LEVELBUTTON;
 
 int endSize;
 int xoffset;
@@ -15,6 +15,8 @@ PImage floorImg;
 Background background;
 
 // State of the program
+import javax.swing.*;
+
 String state = "MENU";
 String currentlySelected = "BLOCK";
 boolean debug = true;
@@ -49,6 +51,8 @@ public void setup() {
   PLAY_HOVER = loadImage("images/play-hover.png");
   QUIT_HOVER = loadImage("images/quit-hover.png");
   LEVEL_COMPLETE = loadImage("images/level-complete-message.png");
+  BACK = loadImage("images/back.png");
+  BACK_HOVER = loadImage("images/back-hover.png");
   frameRate(144);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT");
@@ -63,7 +67,7 @@ public void setup() {
   clear = new Button(100, 320, 60, 20, "Clear");
   runMode = new Button(20, 380, 80, 20, "Run Mode");
   planeMode = new Button(110, 380, 80, 20, "Plane Mode");
-  returnToMenu = new Button(width/2 - 150, 150, 300, 100, "Return To Menu", 35);
+  returnToMenu = new Button(width/2 - 150, 150, 300, 100, "Return To Menu", 35, #fffacd);
   size(1020, 420);
 }
 
@@ -211,7 +215,11 @@ public void mouseClicked() {
       return;
     }
     if (mouseButton == LEFT && load.isHovering()) {
-      map.load("lvl1.txt");
+      String filename = JOptionPane.showInputDialog("Enter a name (no .txt): ");
+      if (filename == null || filename.equals("null")) {
+        return;
+      } 
+      map.load("/levels/" + filename + ".txt");
       showingText = true;
       return;
     }
@@ -243,6 +251,13 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && debugB.isHovering()) {
       debug = !debug;
+    }
+  }
+
+  if (state == "SELECT") {
+    if (mouseButton == LEFT && (mouseX < 111 + 5 && mouseY > height - 68 / 2)) {
+      state = "MENU";
+      return;
     }
   }
 }

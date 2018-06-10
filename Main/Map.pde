@@ -10,8 +10,6 @@ public class Map {
 
 
   PrintWriter output;
-  boolean typing = false;
-  String input = "";
 
   /** Constructs the map */
   public Map(int bgColor) {
@@ -43,15 +41,17 @@ public class Map {
   // Writes to a file the properties of every block on the map. 
   public void save() {
     String filename = JOptionPane.showInputDialog("Enter a name:");
-    if (typing == false) {
-      output = createWriter("levels/" + filename + ".txt"); 
-      for (Block b : blocks) {
-        output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
-        //System.out.println(b.getType());
-      }   
-      output.flush(); 
-      output.close();
+    
+    if(filename == null || filename.equals("null")){
+      return;
     }
+    output = createWriter("levels/" + filename + ".txt"); 
+    for (Block b : blocks) {
+      output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
+      //System.out.println(b.getType());
+    }   
+    output.flush(); 
+    output.close();
   }
 
 
