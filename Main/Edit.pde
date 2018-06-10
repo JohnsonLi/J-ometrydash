@@ -51,6 +51,7 @@ public class Edit {
     block.draw();
     spike.draw();
     portal.draw();
+    portalR.draw();
     save.draw();
     load.draw();
     clear.draw();

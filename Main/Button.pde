@@ -2,6 +2,7 @@ public class Button {
   float x, y, bWidth, bHeight;
   int textSize;
   String label;
+
   PImage buttonImg = loadImage("images/button.png");
 
   public Button(float x, float y, float bWidth, float bHeight, String label) {
@@ -10,16 +11,18 @@ public class Button {
     this.bWidth = bWidth;
     this.bHeight = bHeight;
     this.label =label;
-    this.textSize = 12;
+    this.textSize = 14;
+    textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
-  
-   public Button(float x, float y, float bWidth, float bHeight, String label, int textSize) {
+
+  public Button(float x, float y, float bWidth, float bHeight, String label, int textSize) {
     this.x = x;
     this.y = y;
     this.bWidth = bWidth;
     this.bHeight = bHeight;
     this.label =label;
     this.textSize = textSize;
+    textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
 
   // Checks if your mouse is hovering over 'this' button
@@ -35,8 +38,8 @@ public class Button {
   public void draw() {
     pushMatrix(); 
 
-    image(buttonImg,x, y, bWidth, bHeight);
-    
+    image(buttonImg, x, y, bWidth, bHeight);
+
     textSize(textSize);
     fill(#000000);
     textAlign(CENTER, CENTER);

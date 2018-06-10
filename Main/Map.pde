@@ -78,6 +78,8 @@ public class Map {
         case 2:
           addBlock(new Portal(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
           break;
+        case 3:
+          addBlock(new PortalRun(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
         }
       }
       reader.close();
