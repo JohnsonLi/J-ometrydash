@@ -41,11 +41,11 @@ public class Map {
 
   // Writes to a file the properties of every block on the map. 
   public void save() {
-    String path = JOptionPane.showInputDialog("Enter a path");
+    String filename = JOptionPane.showInputDialog("Enter a name:");
     //typing = true;
     //System.out.println("TYPING");
     if (typing == false) {
-      output = createWriter("level1.txt"); 
+      output = createWriter(filename + ".txt"); 
       for (Block b : blocks) {
         output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
         //System.out.println(b.getType());
@@ -55,17 +55,17 @@ public class Map {
     }
   }
 
-  
+
   // Reads a file and create new block objects using the info.
-  public void load() {
-    BufferedReader reader = createReader("level1.txt");
+  public void load(String filename) {
+    BufferedReader reader = createReader(filename);
     removeBlocks();
     String line = null;
     try {
       while ((line = reader.readLine()) != null) {
         String[] pieces = split(line, " ");
         int type = Integer.parseInt(pieces[5]);
-        
+
         // Check which type of block it is
         switch (type) {
         case 0:

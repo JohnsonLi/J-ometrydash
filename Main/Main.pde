@@ -92,7 +92,7 @@ public void edit() {
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("current obstacle: " + currentlySelected, 120, 380);
-  
+
   // Draws a button depending on whether it's being hovered or not.
   if (mouseButton == LEFT && save.isHovering() && showingText == true) {
     textSize(25);
@@ -110,12 +110,12 @@ public void edit() {
 public void menu() {
   // Debug string for indicator
   String debugStatus;
-  
+
   // Sets status from debug boolean
   debugStatus = debug ? "ON" : "OFF";
-  
+
   background(BACKGROUND_PIC);
-  
+
   // Draws the PLAY and QUIT buttons
   imageMode(CENTER);
   if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
@@ -203,7 +203,7 @@ public void mouseClicked() {
       return;
     }
     if (mouseButton == LEFT && load.isHovering()) {
-      map.load();
+      map.load("test.txt");
       showingText = true;
       return;
     }
@@ -236,6 +236,9 @@ public void mouseClicked() {
     if (mouseButton == LEFT && debugB.isHovering()) {
       debug = !debug;
     }
+  }
+
+  if (state.equals("LEVEL") {
   }
 }
 
