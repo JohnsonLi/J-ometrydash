@@ -55,19 +55,19 @@ public void draw() {
     menu();
     break;
   case "END":
-    
   }
 }
 
 
 public void play() {
   background.draw();
+  
   pushMatrix();
   if (xoffset <= -200) {
     translate(xoffset+200, 0);
   } //Lets the block travel to its position before screen scrolls
   map.draw();
-  
+
   if (player.getX() > limit * -1) {
     state = "END";
   } else { 
@@ -75,6 +75,7 @@ public void play() {
     edit.draw();
     debugButtons();
   }
+  
   player.draw();
   popMatrix();
 
@@ -146,7 +147,7 @@ public void menu() {
   textAlign(CENTER, CENTER);
   text("Debug: " + debugStatus, 980, 380);
 
-  debugB = new Button(950, 390, 60, 20, "Debug", #80efbd, #0cb818);
+  debugB = new Button(950, 390, 60, 20, "Debug");
   debugB.draw();
 }
 
@@ -247,8 +248,8 @@ public void mouseClicked() {
     }
   }
 
-  if (state.equals("LEVEL") {
-  }
+  //if (state.equals("LEVEL") {
+  //}
 }
 
 
@@ -277,12 +278,12 @@ public void debugButtons() {
 
 // Draws all buttons for edit mode.
 public void editButtons() {
-  block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
-  spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
-  portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
-  save = new Button(30, 320, 60, 20, "SAVE", #80efbd, #0cb818);
-  load = new Button(30, 350, 60, 20, "LOAD", #80efbd, #0cb818);
-  clear = new Button(100, 320, 60, 20, "CLEAR", #80efbd, #0cb818);
+  block = new Button(930, 320, 60, 20, "Block");
+  spike = new Button(930, 350, 60, 20, "Spike");
+  portal = new Button(930, 380, 60, 20, "Portal");
+  save = new Button(30, 320, 60, 20, "Save");
+  load = new Button(30, 350, 60, 20, "Load");
+  clear = new Button(100, 320, 60, 20, "Clear");
   block.draw();
   spike.draw();
   portal.draw();
