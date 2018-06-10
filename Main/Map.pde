@@ -27,7 +27,6 @@ public class Map {
 
   /** Adds a new block onto the map*/
   public void addBlock(Block b) {
-    System.out.println(b.getX());
     if (b.getY() < 0) return;
     if (map[b.getY()][b.getX()] != null) return;
     blocks.add(b);
@@ -44,8 +43,6 @@ public class Map {
   // Writes to a file the properties of every block on the map. 
   public void save() {
     String filename = JOptionPane.showInputDialog("Enter a name:");
-    //typing = true;
-    //System.out.println("TYPING");
     if (typing == false) {
       output = createWriter("levels/" + filename + ".txt"); 
       for (Block b : blocks) {
