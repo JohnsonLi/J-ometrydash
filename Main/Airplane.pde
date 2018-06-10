@@ -41,7 +41,7 @@ public class Airplane extends PlayerMode {
       translate(p.getX(), p.getY());
       player.endGameRotation = player.endGameRotation * 1.01 + PI/100;
       rotate(player.endGameRotation);
-      
+
       imageMode(CORNER);
       image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
       image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);

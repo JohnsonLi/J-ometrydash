@@ -13,7 +13,7 @@ public class Player {
     velocity = new Vector(2.5, 0);
     particles = new ArrayList<Particle>();
     endGameVelocity = new Vector(2, -5);
-    endGameParticle = new Trail(0,0, #66ffcc,300);
+    endGameParticle = new Trail(0, 0, #66ffcc, 300);
     endGameRotation = 0;
   }
 
@@ -26,7 +26,7 @@ public class Player {
     fill(150, 100, 255, 175);
     rect(x - 50, 300, 25, 2);
   }
-  
+
   public void draw(boolean b) {
     current.draw(b);
   }

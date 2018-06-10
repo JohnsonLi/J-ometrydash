@@ -1,6 +1,6 @@
 public class Background {
   PImage backgroundImg;
-  
+
   public Background(PImage img) {
     backgroundImg = img;
   }
@@ -10,5 +10,4 @@ public class Background {
     image(backgroundImg, 800, 0);
     image(backgroundImg, 1600, 0);
   }
-
 }

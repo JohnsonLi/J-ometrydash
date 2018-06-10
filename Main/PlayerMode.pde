@@ -28,9 +28,9 @@ public abstract class PlayerMode {
     }
     updateParticles();
   }
-  
+
   public abstract void draw(boolean b);
-  
+
   public boolean isColliding() {
     for (Block b : blocksToCheck()) {
       if (b != null) {

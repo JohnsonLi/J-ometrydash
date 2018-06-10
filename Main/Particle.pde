@@ -8,10 +8,10 @@ public abstract class Particle {
     x = p.getX() - UNIT/2;
     y = p.getY() - UNIT/2;
   }
-  
+
   public Particle(int x, int y) {
-     this.x = x;
-     this.y = y;
+    this.x = x;
+    this.y = y;
   }
   public abstract void draw();
   public abstract void update();

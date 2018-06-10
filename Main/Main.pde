@@ -6,16 +6,16 @@ final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 
 final int BLOCK_COLOR = #fffacd;
-PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER,LEVEL_COMPLETE;
+PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER, LEVEL_COMPLETE;
 
 int endSize;
 int xoffset;
-static int limit = -10000;
+static int limit = -9000;
 PImage floorImg;
 Background background;
 
 // State of the program
-String state = "END";
+String state = "PLAY";
 String currentlySelected = "BLOCK";
 boolean debug = true;
 boolean showingText = false;
@@ -114,7 +114,7 @@ public void end() {
   } else {
     pushMatrix();
     translate(xoffset+200, 0);
-    
+
     player.draw(false);
     Vector v = player.endGameVelocity;
     player.addX((int)v.getX());

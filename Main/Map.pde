@@ -7,7 +7,7 @@ public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
   int bgColor, floorColor, blockColor;
-  
+
 
   PrintWriter output;
   boolean typing = false;
@@ -17,7 +17,6 @@ public class Map {
   public Map(int bgColor) {
     this.bgColor = bgColor;
     map = new Block[height][width + (-1 * Main.getLimit())];
-    
   }
 
   /** Returns the block at specific coords */
@@ -90,7 +89,15 @@ public class Map {
 
   // Removes all blocks from the map except the floor.
   public void removeBlocks() {
-    blocks.clear();
+    //Can't edit concurrently so do it on a copy.
+    ArrayList<Block> copy = new ArrayList<Block>(blocks);
+    for (Block b : blocks) {
+      copy.add(b);
+    }
+    for (Block b : copy) {
+      removeBlock(b, blocks);
+    }
+
     // Put floor back
     addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
   }

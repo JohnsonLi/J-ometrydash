@@ -22,7 +22,7 @@ public class RunningParticle extends Particle {
     x += velocity.getX();
     y += velocity.getY();
   }
-  
+
   public int getLifetime() {
     return lifetime;
   }

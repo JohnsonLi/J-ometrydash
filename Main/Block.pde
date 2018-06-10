@@ -28,7 +28,7 @@ public class Block {
     pushMatrix();
     noStroke();
     fill(blockColor);
-    image(img,x, y);
+    image(img, x, y, UNIT, UNIT);
     popMatrix();
   }
 
