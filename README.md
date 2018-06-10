@@ -30,6 +30,7 @@ bold = milestone
 6/9/18 - Level loading can load different blocks. Debug switch added.  
 6/10/18 - **Win sequence added. Level loading from use input added. Level Selection screen added.** Also made some levels.
 :tada::tada::tada::tada::tada:  
+(note: contributions in insights is 100% not accurate)  
 
 ## Future Plans  
 * More modes of movement.  
