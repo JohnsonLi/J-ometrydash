@@ -26,8 +26,17 @@ bold = milestone
 6/5/18 - **Airplane mode added. Ability to choose blocks, remove blocks, and scroll in editor. Made a menu.**  
 6/6/18 - **Added portals to switch to plane mode.**   
 6/7/18 - **Added particles for running and airplane mode. Basic level saving and loading added**  
-6/8/18 - Made some things pictures like the floor and blocks. 
+6/8/18 - Made some things pictures like the floor and blocks.  
+6/9/18 - Level loading can load different blocks. Debug switch added.  
+6/10/18 - **Win sequence added. Level loading from use input added. Level Selection screen added.** Also made some levels.
+:tada::tada::tada::tada::tada:  
 
 ## Future Plans  
+* More modes of movement.  
+* Better level editor with more obstacles and obstacle orientation.  
+* Better looking UI and levels.  
 
 ## Known Bugs  
+* Indicator for loading and saving level only appears while hovreing the button.
+* In plane mode, you can fly above the map.
+* Sometimes spikes don't want to be removed in editing mode.
