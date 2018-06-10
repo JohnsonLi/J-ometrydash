@@ -15,7 +15,7 @@ PImage floorImg;
 Background background;
 
 // State of the program
-String state = "MENU";
+String state = "END";
 String currentlySelected = "BLOCK";
 boolean debug = true;
 boolean showingText = false;
@@ -60,7 +60,7 @@ public void setup() {
   clear = new Button(100, 320, 60, 20, "Clear");
   runMode = new Button(20, 380, 80, 20, "Run Mode");
   planeMode = new Button(110, 380, 80, 20, "Plane Mode");
-  returnToMenu = new Button(415, 200, 150, 75, "Return To Menu");
+  returnToMenu = new Button(width/2 - 150, 150, 300, 100, "Return To Menu", 35);
   size(1020, 420);
 }
 
@@ -106,7 +106,7 @@ public void end() {
       endSize--;
     }   
     imageMode(CENTER);
-    image(LEVEL_COMPLETE, 500, 100, 400./endSize, 100./endSize);
+    image(LEVEL_COMPLETE, width / 2, 100, 400./endSize, 100./endSize);
     imageMode(CORNER);
   } else {
     pushMatrix();

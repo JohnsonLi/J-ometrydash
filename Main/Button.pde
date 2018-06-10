@@ -1,5 +1,6 @@
 public class Button {
   float x, y, bWidth, bHeight;
+  int textSize;
   String label;
   PImage buttonImg = loadImage("images/button.png");
 
@@ -9,6 +10,16 @@ public class Button {
     this.bWidth = bWidth;
     this.bHeight = bHeight;
     this.label =label;
+    this.textSize = 12;
+  }
+  
+   public Button(float x, float y, float bWidth, float bHeight, String label, int textSize) {
+    this.x = x;
+    this.y = y;
+    this.bWidth = bWidth;
+    this.bHeight = bHeight;
+    this.label =label;
+    this.textSize = textSize;
   }
 
   // Checks if your mouse is hovering over 'this' button
@@ -26,7 +37,7 @@ public class Button {
 
     image(buttonImg,x, y, bWidth, bHeight);
     
-    textSize(12);
+    textSize(textSize);
     fill(#000000);
     textAlign(CENTER, CENTER);
     text(label, width - (width - x - bWidth / 2), height - (height - y - bHeight / 2));
