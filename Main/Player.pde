@@ -1,7 +1,7 @@
 public class Player {
   int x, y;
   Vector velocity;
-  PlayerMode current;
+  PlayerMode current = new Running(this);
   ArrayList<Particle> particles;
 
   /**Constructs a new player*/
@@ -9,7 +9,6 @@ public class Player {
     x = 0;
     y = 300 - UNIT/2;
     velocity = new Vector(2.5, 0);
-    current = new Running(this);
     particles = new ArrayList<Particle>();
   }
 

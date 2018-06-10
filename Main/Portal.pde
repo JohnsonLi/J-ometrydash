@@ -1,4 +1,5 @@
 public class Portal extends Block {
+  int type = 2;
 
   PImage img = loadImage("images/planeportal.png");
   public Portal(int x, int y, int bwidth, int bheight, int bcolor) {
@@ -19,5 +20,9 @@ public class Portal extends Block {
       player.getVelocity().multiplyY(.33);
       player.setMode(new Airplane(player));
     }
+  }
+
+  public int getType() {
+    return type;
   }
 }

@@ -16,10 +16,13 @@ Background background;
 // State of the program
 String state = "MENU";
 String currentlySelected = "BLOCK";
+boolean debug = true;
+boolean showingText = false;
 
-Button edit, back;
+Button edit, back, clear, save, load;
 Button runMode, planeMode;
 Button block, spike, portal;
+Button debugB;
 
 public void setup() {
   map = new Map(BG_COLOR);
@@ -56,6 +59,7 @@ public void draw() {
   }
 }
 
+
 public void play() {
   background.draw();
   pushMatrix();
@@ -73,7 +77,12 @@ public void play() {
   }
   player.draw();
   popMatrix();
-  
+
+  if (debug) {
+    edit.draw();
+    debugButtons();
+  }
+
   if (xoffset < limit) return;
   xoffset-=2.5;
 }
@@ -81,11 +90,12 @@ public void play() {
 public void edit() {
   background.draw();
   pushMatrix();
+
   translate(xoffset, 0);
   map.draw();
   drawGrid();
+
   popMatrix();
-  
   back.draw();
   editButtons();
 
@@ -93,10 +103,31 @@ public void edit() {
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("current obstacle: " + currentlySelected, 120, 380);
+
+  // Draws a button depending on whether it's being hovered or not.
+  if (mouseButton == LEFT && save.isHovering() && showingText == true) {
+    textSize(25);
+    fill(#000000);
+    textAlign(CENTER, CENTER);
+    text("MAP SAVED", width / 2, 100);
+  } else if (mouseButton == LEFT && load.isHovering() && showingText == true) {
+    textSize(25);
+    fill(#000000);
+    textAlign(CENTER, CENTER);
+    text("MAP LOADED", width / 2, 100);
+  }
 }
 
 public void menu() {
+  // Debug string for indicator
+  String debugStatus;
+
+  // Sets status from debug boolean
+  debugStatus = debug ? "ON" : "OFF";
+
   background(BACKGROUND_PIC);
+
+  // Draws the PLAY and QUIT buttons
   imageMode(CENTER);
   if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
     image(PLAY_HOVER, width / 2, 225);
@@ -109,6 +140,14 @@ public void menu() {
   } else {
     image(QUIT, width / 2, 325);
   }
+
+  // Debug on or off indicator
+  fill(#000000);
+  textAlign(CENTER, CENTER);
+  text("Debug: " + debugStatus, 980, 380);
+
+  debugB = new Button(950, 390, 60, 20, "Debug", #80efbd, #0cb818);
+  debugB.draw();
 }
 
 public void keyPressed() {
@@ -122,6 +161,8 @@ public void keyPressed() {
   }
 }
 
+
+// Events for when the mouse is clicked.
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
     switch (currentlySelected) {
@@ -137,7 +178,7 @@ public void mouseClicked() {
     }
   }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
-    map.removeBlock(map.blockAt(mouseX - xoffset, mouseY));
+    map.removeBlock(map.blockAt(mouseX - xoffset, mouseY), map.getBlocks());
   }
   if (mouseButton == CENTER) {
     player.die();
@@ -165,16 +206,30 @@ public void mouseClicked() {
       currentlySelected = "PORTAL";
       return;
     }
+    if (mouseButton == LEFT && save.isHovering()) {
+      map.save();
+      showingText = true;
+      return;
+    }
+    if (mouseButton == LEFT && load.isHovering()) {
+      map.load("test.txt");
+      showingText = true;
+      return;
+    }
+    if (mouseButton == LEFT && clear.isHovering()) {
+      map.removeBlocks();
+      return;
+    }
   }
-  if (state.equals("PLAY")) {
+  if (state.equals("PLAY") && debug) {
     if (mouseButton == LEFT && runMode.isHovering()) {
-      player.setMode(new Running(player));
       player.die();
+      player.setMode(new Running(player));
       return;
     }
     if (mouseButton == LEFT && planeMode.isHovering()) {
-      player.setMode(new Airplane(player));
       player.die();
+      player.setMode(new Airplane(player));
       return;
     }
   }
@@ -184,9 +239,15 @@ public void mouseClicked() {
       state = "PLAY";
       return;
     }
-    if ((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
+    if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
       exit();
     }
+    if (mouseButton == LEFT && debugB.isHovering()) {
+      debug = !debug;
+    }
+  }
+
+  if (state.equals("LEVEL") {
   }
 }
 
@@ -205,6 +266,7 @@ public void drawGrid() {
   }
 }
 
+// Draws all buttons for debug mode.
 public void debugButtons() {
   runMode = new Button(20, 380, 80, 20, "Run Mode");
   planeMode = new Button(110, 380, 80, 20, "Plane Mode");
@@ -212,13 +274,21 @@ public void debugButtons() {
   planeMode.draw();
 }
 
+
+// Draws all buttons for edit mode.
 public void editButtons() {
-  block = new Button(930, 320, 60, 20, "Block");
-  spike = new Button(930, 350, 60, 20, "Spikes");
-  portal = new Button(930, 380, 60, 20, "Portals");
+  block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
+  spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
+  portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
+  save = new Button(30, 320, 60, 20, "SAVE", #80efbd, #0cb818);
+  load = new Button(30, 350, 60, 20, "LOAD", #80efbd, #0cb818);
+  clear = new Button(100, 320, 60, 20, "CLEAR", #80efbd, #0cb818);
   block.draw();
   spike.draw();
   portal.draw();
+  save.draw();
+  load.draw();
+  clear.draw();
 }
 
 public static int getLimit() {

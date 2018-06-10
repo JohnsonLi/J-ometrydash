@@ -6,6 +6,11 @@ public class Block {
   boolean harmful, isSolid;
   PImage img;
 
+  //0: block
+  //1: spike
+  //2: portal
+  int type;
+
   /** Constructs new block*/
   public Block(int x, int y, int blockWidth, int blockHeight, int blockColor) {
     this.blockWidth = blockWidth;
@@ -15,6 +20,7 @@ public class Block {
     this.y = y;
     this.isSolid = true;
     img = loadImage("images/block.png");
+    this.type = 0;
   }
 
   /** Draws a square at x,y coords*/
@@ -57,10 +63,16 @@ public class Block {
   public int getHeight() {
     return blockHeight;
   }
+  public int getColor() {
+    return blockColor;
+  }
   public boolean isHarmful() {
     return harmful;
   }
   public boolean isSolid() {
     return isSolid;
+  }
+  public int getType() {
+    return type;
   }
 }
