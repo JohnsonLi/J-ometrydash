@@ -47,7 +47,7 @@ public class Map {
     //typing = true;
     //System.out.println("TYPING");
     if (typing == false) {
-      output = createWriter(filename + ".txt"); 
+      output = createWriter("levels/" + filename + ".txt"); 
       for (Block b : blocks) {
         output.println(b.getX() + " " + b.getY() + " " + b.getWidth() + " " + b.getHeight() + " " + b.getColor() + " " + b.getType());
         //System.out.println(b.getType());

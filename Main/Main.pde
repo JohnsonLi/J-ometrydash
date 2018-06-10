@@ -10,12 +10,12 @@ PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER, LEVEL_COMPLETE;
 
 int endSize;
 int xoffset;
-static int limit = -9000;
+static int limit = -10000;
 PImage floorImg;
 Background background;
 
 // State of the program
-String state = "PLAY";
+String state = "MENU";
 String currentlySelected = "BLOCK";
 boolean debug = true;
 boolean showingText = false;
@@ -29,6 +29,7 @@ Button returnToMenu;
 Play playClass;
 Edit editClass;
 Menu menuClass;
+Select selectClass;
 
 public void setup() {
   endSize = 100;
@@ -36,6 +37,7 @@ public void setup() {
   playClass = new Play();
   editClass = new Edit();
   menuClass = new Menu();
+  selectClass = new Select();
   map = new Map(BG_COLOR);
   floorImg = loadImage("images/floor.png");
   //floor
@@ -79,6 +81,9 @@ public void draw() {
   case "END":
     end();
     break;
+  case "SELECT":
+    select();
+    break;
   }
 }
 
@@ -95,6 +100,9 @@ public void menu() {
   menuClass.menu();
 }
 
+public void select() {
+  selectClass.select();
+}
 public void end() {
   background.draw();
   pushMatrix();
@@ -219,7 +227,7 @@ public void mouseClicked() {
 
   if (state.equals("MENU")) {
     if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
-      state = "PLAY";
+      state = "SELECT";
       return;
     }
     if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
