@@ -22,7 +22,7 @@ boolean showingText = false;
 
 Button edit, back, clear, save, load;
 Button runMode, planeMode;
-Button block, spike, portal;
+Button block, spike, portal, portalR;
 Button debugB;
 Button returnToMenu;
 
@@ -54,9 +54,10 @@ public void setup() {
   edit = new Button(930, 10, 60, 20, "EDIT");
   back = new Button(930, 10, 60, 20, "BACK");
   debugB = new Button(950, 390, 60, 20, "Debug");
-  block = new Button(930, 320, 60, 20, "Block");
-  spike = new Button(930, 350, 60, 20, "Spike");
-  portal = new Button(930, 380, 60, 20, "Portal");
+  block = new Button(930, 290, 60, 20, "Block");
+  spike = new Button(930, 320, 60, 20, "Spike");
+  portal = new Button(930, 350, 60, 20, "Portal");
+  portalR = new Button(930, 380, 60, 20, "Portal Run");
   save = new Button(30, 320, 60, 20, "Save");
   load = new Button(30, 350, 60, 20, "Load");
   clear = new Button(100, 320, 60, 20, "Clear");
@@ -161,6 +162,9 @@ public void mouseClicked() {
     case "PORTAL":
       map.addBlock(new Portal(UNIT * ((mouseX - xoffset) / UNIT), UNIT * ((mouseY / UNIT)-1), UNIT, 3 * UNIT, BLOCK_COLOR));
       break;
+    case "PORTALRUN":
+      map.addBlock(new PortalRun(UNIT * ((mouseX - xoffset) / UNIT), UNIT * ((mouseY / UNIT)-1), UNIT, 3 * UNIT, BLOCK_COLOR));
+      break;
     }
   }
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
@@ -195,6 +199,10 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && portal.isHovering() && state.equals("EDIT")) {
       currentlySelected = "PORTAL";
+      return;
+    }
+    if (mouseButton == LEFT && portalR.isHovering() && state.equals("EDIT")) {
+      currentlySelected = "PORTALRUN";
       return;
     }
     if (mouseButton == LEFT && save.isHovering()) {
