@@ -1,22 +1,29 @@
 public class RunningParticle extends Particle {
 
   private Vector velocity;
-
+  private int lifetime;
+  private int size;
 
   public RunningParticle(Player p, Vector v) {
     super(p);
     velocity = v;
-    y = p.getY() + UNIT/3;
+    y = p.getY() + UNIT/2 - (UNIT/15. * random(5));
+    lifetime = 100;
+    size = int(random(5)) + 5;
   }
 
   public void draw() {
-    fill(255, 0, 0);
-    rect(x, y, 3, 3);
+    fill(81, 208, 255);
+    rect(x, y, size, size);
   }
 
   public void update() {
+    lifetime --;
     x += velocity.getX();
     y += velocity.getY();
-    velocity.add(new Vector(0, .5));
+  }
+  
+  public int getLifetime() {
+    return lifetime;
   }
 }

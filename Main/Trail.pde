@@ -9,7 +9,7 @@ public class Trail extends Particle {
   }
 
   public void update() {
-    points.add(new int[] {p.getX() - UNIT + 1, p.getY()});
+    points.add(new int[] {p.getX() - 2 * UNIT/3, p.getY()});
     int[] a = points.get(0);
     if (dist(a[0], a[1], p.getX(), p.getY()) > 100) {
       points.remove(0);

@@ -39,6 +39,7 @@ public class Player {
     y = 300 - UNIT / 2;
     xoffset = 0;
     velocity = new Vector(2.5, 0);
+    particles.clear();
     current = new Running(this);
   }
 

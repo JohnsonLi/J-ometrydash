@@ -16,12 +16,12 @@ public class Airplane extends PlayerMode {
     } else {
       p.addVelocity(new Vector(0, GRAVITY));
     }
-    particle.update();
-    particle.draw();
   }
 
 
   public void draw() {
+    particle.update();
+    particle.draw();
     pushMatrix();
     translate(p.getX(), p.getY()); //Since rotate rotates around origin, need to use translate
     noStroke();
@@ -30,8 +30,7 @@ public class Airplane extends PlayerMode {
     image(planeImg, -UNIT, -UNIT/2, UNIT * 2, UNIT);
     image(img, -UNIT/2, -2* UNIT/3, 2*UNIT/3, 2*UNIT/3);   
     popMatrix();
-    particle.update();
-    particle.draw();
+    
   }
 
   public ArrayList<Block> blocksToCheck() {

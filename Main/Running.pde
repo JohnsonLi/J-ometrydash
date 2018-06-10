@@ -18,20 +18,20 @@ public class Running extends PlayerMode {
     p.addVelocity(new Vector(0, GRAVITY));
     //Every 10 milliseconds it adds a new particle
     if (p.isOnGround() && millis() % 10 == 0) {
-      p.particles().add(new RunningParticle(p, new Vector(-.01 * random(2), -3 * random(2))));
+      p.particles().add(new RunningParticle(p, new Vector(-1 * random(2), -.5 * random(2))));
     }
     ArrayList<Particle> particlesToRemove = new ArrayList<Particle>();
     for (Particle p : p.particles()) {
       if (millis() % 2 == 0) {
         p.update();
       }
-      if (map.blockAt((int)p.getX(), (int)p.getY()) != null) {
+      if (((RunningParticle)p).getLifetime() < 0) {
         particlesToRemove.add(p);
       }
       p.draw();
     }
-    for (Particle pa : particlesToRemove) {
-      p.particles().remove(pa);
+    for (Particle particle : particlesToRemove) {
+      p.particles().remove(particle);
     }
     
   }
