@@ -36,6 +36,7 @@ public class Map {
     }
   }
 
+  // Writes to a file the properties of every block on the map. 
   public void save() {
     //typing = true;
     //System.out.println("TYPING");
@@ -50,6 +51,8 @@ public class Map {
     }
   }
 
+  
+  // Reads a file and create new block objects using the info.
   public void load() {
     BufferedReader reader = createReader("level1.txt");
     removeBlocks();
@@ -58,7 +61,8 @@ public class Map {
       while ((line = reader.readLine()) != null) {
         String[] pieces = split(line, " ");
         int type = Integer.parseInt(pieces[5]);
-        //System.out.println(type);
+        
+        // Check which type of block it is
         switch (type) {
         case 0:
           addBlock(new Block(Integer.parseInt(pieces[0]), Integer.parseInt(pieces[1]), Integer.parseInt(pieces[2]), Integer.parseInt(pieces[3]), Integer.parseInt(pieces[4])));
@@ -78,8 +82,9 @@ public class Map {
     }
   }
 
+  // Removes all blocks from the map except the floor.
   public void removeBlocks() {
-    //Can't edit concurrently so do it on a copy and put it back
+    //Can't edit concurrently so do it on a copy.
     ArrayList<Block> copy = new ArrayList<Block>(blocks);
     for (Block b : blocks) {
       copy.add(b);
@@ -90,22 +95,6 @@ public class Map {
 
     // Put floor back
     addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
-  }
-
-  void keyPressed() {
-    //if (keyPressed && typing == true) {
-    //  if (key == TAB) {
-    //    System.out.println("CANCELED");
-    //    typing = false;
-    //    return;
-    //  } else if (key == ENTER) {
-    //    System.out.println("Filename: " + input);
-    //    typing = false;
-    //  } else {
-    //    input += key;
-    //  }
-    //}
-    //input += key;
   }
 
   //Draws every block and the colors

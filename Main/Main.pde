@@ -92,7 +92,8 @@ public void edit() {
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("current obstacle: " + currentlySelected, 120, 380);
-
+  
+  // Draws a button depending on whether it's being hovered or not.
   if (mouseButton == LEFT && save.isHovering() && showingText == true) {
     textSize(25);
     fill(#000000);
@@ -107,9 +108,15 @@ public void edit() {
 }
 
 public void menu() {
+  // Debug string for indicator
   String debugStatus;
+  
+  // Sets status from debug boolean
   debugStatus = debug ? "ON" : "OFF";
+  
   background(BACKGROUND_PIC);
+  
+  // Draws the PLAY and QUIT buttons
   imageMode(CENTER);
   if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
     image(PLAY_HOVER, width / 2, 225);
@@ -122,7 +129,8 @@ public void menu() {
   } else {
     image(QUIT, width / 2, 325);
   }
-  
+
+  // Debug on or off indicator
   fill(#000000);
   textAlign(CENTER, CENTER);
   text("Debug: " + debugStatus, 980, 380);
@@ -144,6 +152,8 @@ public void keyPressed() {
   }
 }
 
+
+// Events for when the mouse is clicked.
 public void mouseClicked() {
   if (mouseButton == RIGHT && state.equals("EDIT")) {
     switch (currentlySelected) {
@@ -199,7 +209,6 @@ public void mouseClicked() {
     }
     if (mouseButton == LEFT && clear.isHovering()) {
       map.removeBlocks();
-      System.out.println("ef");
       return;
     }
   }
@@ -224,7 +233,7 @@ public void mouseClicked() {
     if (mouseButton == LEFT && (mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
       exit();
     }
-    if(mouseButton == LEFT && debugB.isHovering()){
+    if (mouseButton == LEFT && debugB.isHovering()) {
       debug = !debug;
     }
   }
@@ -245,6 +254,7 @@ public void drawGrid() {
   }
 }
 
+// Draws all buttons for debug mode.
 public void debugButtons() {
   runMode = new Button(20, 380, 70, 20, "Run Mode", #80efbd, #0cb818);
   planeMode = new Button(110, 380, 70, 20, "Plane Mode", #80efbd, #0cb818);
@@ -252,6 +262,8 @@ public void debugButtons() {
   planeMode.draw();
 }
 
+
+// Draws all buttons for edit mode.
 public void editButtons() {
   block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
   spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
