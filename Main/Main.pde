@@ -10,7 +10,7 @@ PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER,LEVEL_COMPLETE;
 
 int endSize;
 int xoffset;
-static int limit = -1000;
+static int limit = -10000;
 PImage floorImg;
 Background background;
 
@@ -190,7 +190,7 @@ public void mouseClicked() {
       return;
     }
     if (mouseButton == LEFT && load.isHovering()) {
-      map.load("test.txt");
+      map.load("lvl1.txt");
       showingText = true;
       return;
     }

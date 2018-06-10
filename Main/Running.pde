@@ -13,7 +13,7 @@ public class Running extends PlayerMode {
 
     super.update();
     if (keyPressed && key == ' ' && p.isOnGround()) {
-      p.addVelocity(new Vector(0, -1 * UNIT / 6.66));
+      p.getVelocity().setY(-1 * UNIT / 6.66);
     }
     p.addVelocity(new Vector(0, GRAVITY));
     //Every 10 milliseconds it adds a new particle
