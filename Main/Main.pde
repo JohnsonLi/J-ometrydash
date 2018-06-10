@@ -39,6 +39,15 @@ public void setup() {
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT");
   back = new Button(930, 10, 60, 20, "BACK");
+  debugB = new Button(950, 390, 60, 20, "Debug");
+  block = new Button(930, 320, 60, 20, "Block");
+  spike = new Button(930, 350, 60, 20, "Spike");
+  portal = new Button(930, 380, 60, 20, "Portal");
+  save = new Button(30, 320, 60, 20, "Save");
+  load = new Button(30, 350, 60, 20, "Load");
+  clear = new Button(100, 320, 60, 20, "Clear");
+  runMode = new Button(20, 380, 80, 20, "Run Mode");
+  planeMode = new Button(110, 380, 80, 20, "Plane Mode");
   size(1020, 420);
 }
 
@@ -146,7 +155,7 @@ public void menu() {
   textAlign(CENTER, CENTER);
   text("Debug: " + debugStatus, 980, 380);
 
-  debugB = new Button(950, 390, 60, 20, "Debug");
+  imageMode(CORNER);
   debugB.draw();
 }
 
@@ -268,8 +277,7 @@ public void drawGrid() {
 
 // Draws all buttons for debug mode.
 public void debugButtons() {
-  runMode = new Button(20, 380, 80, 20, "Run Mode");
-  planeMode = new Button(110, 380, 80, 20, "Plane Mode");
+  
   runMode.draw();
   planeMode.draw();
 }
@@ -277,12 +285,7 @@ public void debugButtons() {
 
 // Draws all buttons for edit mode.
 public void editButtons() {
-  block = new Button(930, 320, 60, 20, "Block");
-  spike = new Button(930, 350, 60, 20, "Spike");
-  portal = new Button(930, 380, 60, 20, "Portal");
-  save = new Button(30, 320, 60, 20, "Save");
-  load = new Button(30, 350, 60, 20, "Load");
-  clear = new Button(100, 320, 60, 20, "Clear");
+  
   block.draw();
   spike.draw();
   portal.draw();
