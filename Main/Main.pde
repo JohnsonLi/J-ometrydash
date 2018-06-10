@@ -24,7 +24,14 @@ Button runMode, planeMode;
 Button block, spike, portal;
 Button debugB;
 
+Play playClass;
+Edit editClass;
+Menu menuClass;
+
 public void setup() {
+  playClass = new Play();
+  editClass = new Edit();
+  menuClass = new Menu();
   map = new Map(BG_COLOR);
   floorImg = loadImage("images/floor.png");
   //floor
@@ -69,94 +76,15 @@ public void draw() {
 
 
 public void play() {
-  background.draw();
-  
-  pushMatrix();
-  if (xoffset <= -200) {
-    translate(xoffset+200, 0);
-  } //Lets the block travel to its position before screen scrolls
-  map.draw();
-
-  if (player.getX() > limit * -1) {
-    state = "END";
-  } else { 
-    player.update();
-  }
-  
-  player.draw();
-  
-  popMatrix();
-
-  if (debug) {
-    edit.draw();
-    debugButtons();
-  }
-
-  if (xoffset < limit) return;
-  xoffset-=2.5;
+  playClass.play();
 }
 
 public void edit() {
-  background.draw();
-  pushMatrix();
-
-  translate(xoffset, 0);
-  map.draw();
-  drawGrid();
-
-  popMatrix();
-  back.draw();
-  editButtons();
-
-  textSize(18);
-  fill(#000000);
-  textAlign(CENTER, CENTER);
-  text("current obstacle: " + currentlySelected, 120, 380);
-
-  // Draws a button depending on whether it's being hovered or not.
-  if (mouseButton == LEFT && save.isHovering() && showingText == true) {
-    textSize(25);
-    fill(#000000);
-    textAlign(CENTER, CENTER);
-    text("MAP SAVED", width / 2, 100);
-  } else if (mouseButton == LEFT && load.isHovering() && showingText == true) {
-    textSize(25);
-    fill(#000000);
-    textAlign(CENTER, CENTER);
-    text("MAP LOADED", width / 2, 100);
-  }
+  editClass.edit();
 }
 
 public void menu() {
-  // Debug string for indicator
-  String debugStatus;
-
-  // Sets status from debug boolean
-  debugStatus = debug ? "ON" : "OFF";
-
-  background(BACKGROUND_PIC);
-
-  // Draws the PLAY and QUIT buttons
-  imageMode(CENTER);
-  if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
-    image(PLAY_HOVER, width / 2, 225);
-  } else {
-    image(PLAY, width / 2, 225);
-  }
-
-  if ((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
-    image(QUIT_HOVER, width / 2, 325);
-  } else {
-    image(QUIT, width / 2, 325);
-  }
-
-  // Debug on or off indicator
-  fill(#000000);
-  textAlign(CENTER, CENTER);
-  text("Debug: " + debugStatus, 980, 380);
-
-  imageMode(CORNER);
-  debugB.draw();
+  menuClass.menu();
 }
 
 public void keyPressed() {
@@ -255,44 +183,10 @@ public void mouseClicked() {
       debug = !debug;
     }
   }
-
-  //if (state.equals("LEVEL") {
-  //}
 }
 
 
-// Draws a grid with each box with the size of 1 UNIT
-public void drawGrid() {
 
-  // Makes line black with less opacity
-  stroke(0, 120);
-
-  for (int x = 0; x < width - xoffset; x += UNIT) {
-    line(x, 0, x, height);
-  }
-  for (int y = 0; y < height; y+= UNIT) {
-    line(0, y, width - xoffset, y);
-  }
-}
-
-// Draws all buttons for debug mode.
-public void debugButtons() {
-  
-  runMode.draw();
-  planeMode.draw();
-}
-
-
-// Draws all buttons for edit mode.
-public void editButtons() {
-  
-  block.draw();
-  spike.draw();
-  portal.draw();
-  save.draw();
-  load.draw();
-  clear.draw();
-}
 
 public static int getLimit() {
   return limit;
