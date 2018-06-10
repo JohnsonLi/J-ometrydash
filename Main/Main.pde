@@ -130,7 +130,7 @@ public void end() {
 public void keyPressed() {
   //Scroll to the right
   if (keyCode == RIGHT && state.equals("EDIT")) {
-    if (xoffset <= limit) return;
+    if (xoffset <= limit + 800) return;
     xoffset -= 15;
     //Scroll to the left
   } else if (keyCode == LEFT && state.equals("EDIT")) {
