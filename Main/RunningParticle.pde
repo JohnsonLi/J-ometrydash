@@ -9,7 +9,7 @@ public class RunningParticle extends Particle {
     velocity = v;
     y = p.getY() + UNIT/2 - (UNIT/15. * random(5));
     lifetime = 100;
-    size = int(random(5)) + 5;
+    size = int(random(5)) + 2;
   }
 
   public void draw() {

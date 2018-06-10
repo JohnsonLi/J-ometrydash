@@ -1,15 +1,13 @@
 public class Button {
   float x, y, bWidth, bHeight;
-  int bColor, stroke;
   String label;
+  PImage buttonImg = loadImage("images/button.png");
 
-  public Button(float x, float y, float bWidth, float bHeight, String label, int bColor, int stroke) {
+  public Button(float x, float y, float bWidth, float bHeight, String label) {
     this.x = x;
     this.y = y;
     this.bWidth = bWidth;
     this.bHeight = bHeight;
-    this.bColor = bColor;
-    this.stroke = stroke;
     this.label =label;
   }
 
@@ -26,10 +24,8 @@ public class Button {
   public void draw() {
     pushMatrix(); 
 
-    fill(bColor);
-    stroke(stroke);
-    rect(x, y, bWidth, bHeight);
-
+    image(buttonImg,x, y, bWidth, bHeight);
+    
     textSize(12);
     fill(#000000);
     textAlign(CENTER, CENTER);

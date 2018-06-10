@@ -9,7 +9,7 @@ final int BLOCK_COLOR = #fffacd;
 PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER;
 
 int xoffset = 0;
-static int limit = -20000;
+static int limit = -1000;
 PImage floorImg;
 Background background;
 
@@ -34,8 +34,8 @@ public void setup() {
   QUIT_HOVER = loadImage("images/quit-hover.png");
   frameRate(144);
   player = new Player();
-  edit = new Button(930, 10, 60, 20, "EDIT", #80efbd, #0cb818);
-  back = new Button(930, 10, 60, 20, "BACK", #80efbd, #0cb818);
+  edit = new Button(930, 10, 60, 20, "EDIT");
+  back = new Button(930, 10, 60, 20, "BACK");
   size(1020, 420);
 }
 
@@ -51,6 +51,8 @@ public void draw() {
   case "MENU":
     menu();
     break;
+  case "END":
+    
   }
 }
 
@@ -61,13 +63,17 @@ public void play() {
     translate(xoffset+200, 0);
   } //Lets the block travel to its position before screen scrolls
   map.draw();
-  player.update();
+  
+  if (player.getX() > limit * -1) {
+    state = "END";
+  } else { 
+    player.update();
+    edit.draw();
+    debugButtons();
+  }
   player.draw();
-
   popMatrix();
   
-  edit.draw();
-  debugButtons();
   if (xoffset < limit) return;
   xoffset-=2.5;
 }
@@ -200,16 +206,16 @@ public void drawGrid() {
 }
 
 public void debugButtons() {
-  runMode = new Button(20, 380, 70, 20, "Run Mode", #80efbd, #0cb818);
-  planeMode = new Button(110, 380, 70, 20, "Plane Mode", #80efbd, #0cb818);
+  runMode = new Button(20, 380, 80, 20, "Run Mode");
+  planeMode = new Button(110, 380, 80, 20, "Plane Mode");
   runMode.draw();
   planeMode.draw();
 }
 
 public void editButtons() {
-  block = new Button(930, 320, 60, 20, "Block", #80efbd, #0cb818);
-  spike = new Button(930, 350, 60, 20, "Spikes", #80efbd, #0cb818);
-  portal = new Button(930, 380, 60, 20, "Portals", #80efbd, #0cb818);
+  block = new Button(930, 320, 60, 20, "Block");
+  spike = new Button(930, 350, 60, 20, "Spikes");
+  portal = new Button(930, 380, 60, 20, "Portals");
   block.draw();
   spike.draw();
   portal.draw();
