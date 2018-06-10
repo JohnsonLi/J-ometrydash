@@ -6,9 +6,10 @@ final int BG_COLOR = #cdebff;
 final int FLOOR_COLOR = #b4e1ff;
 
 final int BLOCK_COLOR = #fffacd;
-PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER;
+PImage BACKGROUND_PIC, PLAY, QUIT, PLAY_HOVER, QUIT_HOVER,LEVEL_COMPLETE;
 
-int xoffset = 0;
+int endSize;
+int xoffset;
 static int limit = -1000;
 PImage floorImg;
 Background background;
@@ -23,12 +24,15 @@ Button edit, back, clear, save, load;
 Button runMode, planeMode;
 Button block, spike, portal;
 Button debugB;
+Button returnToMenu;
 
 Play playClass;
 Edit editClass;
 Menu menuClass;
 
 public void setup() {
+  endSize = 100;
+  xoffset = 0;
   playClass = new Play();
   editClass = new Edit();
   menuClass = new Menu();
@@ -42,6 +46,7 @@ public void setup() {
   QUIT = loadImage("images/quit.png");
   PLAY_HOVER = loadImage("images/play-hover.png");
   QUIT_HOVER = loadImage("images/quit-hover.png");
+  LEVEL_COMPLETE = loadImage("images/level-complete-message.png");
   frameRate(144);
   player = new Player();
   edit = new Button(930, 10, 60, 20, "EDIT");
@@ -55,6 +60,7 @@ public void setup() {
   clear = new Button(100, 320, 60, 20, "Clear");
   runMode = new Button(20, 380, 80, 20, "Run Mode");
   planeMode = new Button(110, 380, 80, 20, "Plane Mode");
+  returnToMenu = new Button(415, 200, 150, 75, "Return To Menu");
   size(1020, 420);
 }
 
@@ -92,18 +98,28 @@ public void menu() {
 public void end() {
   background.draw();
   map.draw();
-  pushMatrix();
-  translate(xoffset+200, 0);
-  player.draw(false);
-  Vector v = player.endGameVelocity;
-  player.addX((int)v.getX());
-  player.addY((int)v.getY());
-  v.add(new Vector(.02,.05));
-  player.endGameParticle.update();
-  player.endGameParticle.draw();
-  popMatrix();
-  
 
+  if (player.getX() > limit * -1 + width) {
+    if (endSize == 1) {
+      returnToMenu.draw();
+    } else {
+      endSize--;
+    }   
+    imageMode(CENTER);
+    image(LEVEL_COMPLETE, 500, 100, 400./endSize, 100./endSize);
+    imageMode(CORNER);
+  } else {
+    pushMatrix();
+    translate(xoffset+200, 0);
+    player.draw(false);
+    Vector v = player.endGameVelocity;
+    player.addX((int)v.getX());
+    player.addY((int)v.getY());
+    v.add(new Vector(.02, .05));
+    player.endGameParticle.update();
+    player.endGameParticle.draw();
+    popMatrix();
+  }
 }
 
 
@@ -148,6 +164,11 @@ public void mouseClicked() {
   if (mouseButton == LEFT && back.isHovering() && state.equals("EDIT")) {
     player.die();
     state = "PLAY";
+    return;
+  }
+  if (mouseButton == LEFT && returnToMenu.isHovering() && state.equals("END")) {
+    setup();
+    state = "MENU";
     return;
   }
   if (state.equals("EDIT")) {
