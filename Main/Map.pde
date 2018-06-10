@@ -1,5 +1,8 @@
 import java.util.*;
 
+//ohh yeaa mr krabs swing is back
+import javax.swing.*;
+
 public class Map {
   private Block[][] map; //For O(0) blockAt()
   private ArrayList<Block> blocks = new ArrayList<Block>(); //For O(n) draw() instead of O(n^2)
@@ -38,6 +41,7 @@ public class Map {
 
   // Writes to a file the properties of every block on the map. 
   public void save() {
+    String path = JOptionPane.showInputDialog("Enter a path");
     //typing = true;
     //System.out.println("TYPING");
     if (typing == false) {
