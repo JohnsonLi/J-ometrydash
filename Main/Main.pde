@@ -72,11 +72,10 @@ public void play() {
     state = "END";
   } else { 
     player.update();
-    edit.draw();
-    debugButtons();
   }
   
   player.draw();
+  
   popMatrix();
 
   if (debug) {

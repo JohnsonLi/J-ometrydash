@@ -105,10 +105,6 @@ public class Map {
 
   //Draws every block and the colors
   public void draw() {
-    //background(bgColor);
-    //System.out.println(typing);
-    //System.out.println(input);
-    background(bgColor);
     for (Block b : blocks) {
       b.draw();
     }
