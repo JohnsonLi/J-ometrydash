@@ -97,7 +97,10 @@ public void menu() {
 
 public void end() {
   background.draw();
+  pushMatrix();
+  translate(xoffset+200, 0);
   map.draw();
+  popMatrix();
 
   if (player.getX() > limit * -1 + width) {
     if (endSize == 1) {
@@ -111,6 +114,7 @@ public void end() {
   } else {
     pushMatrix();
     translate(xoffset+200, 0);
+    
     player.draw(false);
     Vector v = player.endGameVelocity;
     player.addX((int)v.getX());
@@ -153,7 +157,7 @@ public void mouseClicked() {
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY), map.getBlocks());
   }
-  if (mouseButton == CENTER) {
+  if (mouseButton == CENTER && state.equals("PLAY")) {
     player.die();
   }
   if (mouseButton == LEFT && edit.isHovering() && state.equals("PLAY")) {

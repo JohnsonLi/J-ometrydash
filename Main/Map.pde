@@ -90,15 +90,7 @@ public class Map {
 
   // Removes all blocks from the map except the floor.
   public void removeBlocks() {
-    //Can't edit concurrently so do it on a copy.
-    ArrayList<Block> copy = new ArrayList<Block>(blocks);
-    for (Block b : blocks) {
-      copy.add(b);
-    }
-    for (Block b : copy) {
-      removeBlock(b, blocks);
-    }
-
+    blocks.clear();
     // Put floor back
     addBlock(new Block(0, height - 120, width + (-1 * limit), 120, FLOOR_COLOR));
   }
