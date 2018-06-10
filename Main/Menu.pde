@@ -1,33 +1,34 @@
 public class Menu {
 
   public void menu() {
-    background.draw();
-    pushMatrix();
+    // Debug string for indicator
+  String debugStatus;
 
-    translate(xoffset, 0);
-    map.draw();
-    drawGrid();
+  // Sets status from debug boolean
+  debugStatus = debug ? "ON" : "OFF";
 
-    popMatrix();
-    back.draw();
-    editButtons();
+  background(BACKGROUND_PIC);
 
-    textSize(18);
-    fill(#000000);
-    textAlign(CENTER, CENTER);
-    text("current obstacle: " + currentlySelected, 120, 380);
+  // Draws the PLAY and QUIT buttons
+  imageMode(CENTER);
+  if ((mouseX < width / 2 + (130 / 2) && mouseY < 225 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 225 - (89 / 2))) {
+    image(PLAY_HOVER, width / 2, 225);
+  } else {
+    image(PLAY, width / 2, 225);
+  }
 
-    // Draws a button depending on whether it's being hovered or not.
-    if (mouseButton == LEFT && save.isHovering() && showingText == true) {
-      textSize(25);
-      fill(#000000);
-      textAlign(CENTER, CENTER);
-      text("MAP SAVED", width / 2, 100);
-    } else if (mouseButton == LEFT && load.isHovering() && showingText == true) {
-      textSize(25);
-      fill(#000000);
-      textAlign(CENTER, CENTER);
-      text("MAP LOADED", width / 2, 100);
-    }
+  if ((mouseX < width / 2 + (130 / 2) && mouseY < 325 + (89 / 2)) && (mouseX > width / 2 - (130 / 2) && mouseY > 325 - (89 / 2))) {
+    image(QUIT_HOVER, width / 2, 325);
+  } else {
+    image(QUIT, width / 2, 325);
+  }
+
+  // Debug on or off indicator
+  fill(#000000);
+  textAlign(CENTER, CENTER);
+  text("Debug: " + debugStatus, 980, 380);
+
+  imageMode(CORNER);
+  debugB.draw();
   }
 }
