@@ -1,5 +1,5 @@
 # J-ometrydash
-🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓
+🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓🍓 
 Jiayang and Johnson's Spring Final Project!!!  
 
 ## About
