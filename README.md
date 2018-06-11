@@ -38,6 +38,9 @@ bold = milestone
 * Better looking UI and levels.  
 
 ## Known Bugs  
-* Indicator for loading and saving level only appears while hovreing the button.
+* Indicator for loading and saving level only appears while hovering the button.
 * In plane mode, you can fly above the map.
 * Sometimes spikes don't want to be removed in editing mode.
+* After creating a level, level select doesn't update until restart.
+* Level select doesn't scroll.  
+* Bad things might happen if you don't enter anything for user input and press ok.  
