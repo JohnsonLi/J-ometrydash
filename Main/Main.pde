@@ -75,7 +75,7 @@ public void setup() {
 }
 
 public void draw() {
-  System.out.println(state);
+  // System.out.println(state);
   // Sees what state the program is in and calls the corect draw function
   switch(state) {
   case "PLAY":
