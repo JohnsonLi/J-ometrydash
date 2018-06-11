@@ -19,11 +19,11 @@ public class Play {
 
     popMatrix();
 
+    menu.draw();
     if (debug) {
       edit.draw();
       debugButtons();
-    }
-
+    } 
     if (xoffset < limit) return;
     xoffset-=2.5;
   }

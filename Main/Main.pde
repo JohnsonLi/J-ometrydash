@@ -27,6 +27,7 @@ Button runMode, planeMode;
 Button block, spike, portal, portalR;
 Button debugB;
 Button returnToMenu;
+Button menu;
 
 Play playClass;
 Edit editClass;
@@ -68,6 +69,7 @@ public void setup() {
   runMode = new Button(20, 380, 80, 20, "Run Mode");
   planeMode = new Button(110, 380, 80, 20, "Plane Mode");
   returnToMenu = new Button(width/2 - 150, 150, 300, 100, "Return To Menu", 35, #fffacd);
+  menu = new Button(20, 20, 60, 20, "Menu");
   size(1020, 420);
 }
 
@@ -174,8 +176,13 @@ public void mouseClicked() {
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY), map.getBlocks());
   }
-  if (mouseButton == CENTER && state.equals("PLAY")) {
+  if (mouseButton == CENTER && state.equals("PLAY") && debug) {
     player.die();
+  }
+  if (mouseButton == LEFT && menu.isHovering() && state.equals("PLAY") || state.equals("EDIT")) {
+    player.die();
+    state = "MENU";
+    return;
   }
   if (mouseButton == LEFT && edit.isHovering() && state.equals("PLAY")) {
     state = "EDIT";
