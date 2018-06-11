@@ -15,6 +15,7 @@ public class Portal extends Block {
     popMatrix();
   }
 
+  // Does something when player goes through the portal.
   public void portalAction() {
     if (!(player.getMode() instanceof Airplane)) {
       player.getVelocity().multiplyY(.33);

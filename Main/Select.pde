@@ -2,15 +2,18 @@ public class Select {
   PImage bg = loadImage("images/bg-plain.png");
   ArrayList<Button> levels;
 
+  // Gets every file from 'levels' directory and puts them into an arraylist.
   public Select() {
     levels = new ArrayList<Button>();
-    File[] files = listFiles("levels");
+    File[] files = listFiles("levels/");
     int i = 50;
     for (File f : files) {
       levels.add(new Button(width / 2 - 300 / 2, i, 300, 90, f.getName().substring(0,f.getName().length() - 4), 29, #FFFACD));
       i += 75;
     }
   }
+  
+  // Draws the buttons for each file.
   public void select() {
     imageMode(CORNER);
     image(bg,0,0);

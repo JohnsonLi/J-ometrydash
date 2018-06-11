@@ -19,7 +19,7 @@ import javax.swing.*;
 
 String state = "MENU";
 String currentlySelected = "BLOCK";
-boolean debug = true;
+boolean debug = false;
 boolean showingText = false;
 
 Button edit, back, clear, save, load;
@@ -35,6 +35,7 @@ Menu menuClass;
 Select selectClass;
 
 public void setup() {
+  // Initialize all variables, pictures, and buttons
   endSize = 100;
   xoffset = 0;
   playClass = new Play();
@@ -74,6 +75,7 @@ public void setup() {
 }
 
 public void draw() {
+  System.out.println(state);
   // Sees what state the program is in and calls the corect draw function
   switch(state) {
   case "PLAY":
@@ -110,6 +112,7 @@ public void menu() {
 public void select() {
   selectClass.select();
 }
+
 public void end() {
   background.draw();
   pushMatrix();
@@ -141,7 +144,7 @@ public void end() {
   }
 }
 
-
+// For scrolling in edit mode.
 public void keyPressed() {
   //Scroll to the right
   if (keyCode == RIGHT && state.equals("EDIT")) {
@@ -157,6 +160,8 @@ public void keyPressed() {
 
 // Events for when the mouse is clicked.
 public void mouseClicked() {
+  
+  // Chooses what block to place based on what is selected.
   if (mouseButton == RIGHT && state.equals("EDIT")) {
     switch (currentlySelected) {
     case "BLOCK":
@@ -173,13 +178,15 @@ public void mouseClicked() {
       break;
     }
   }
+  
+  //Events for buttons. Self-explanatory.
   if (mouseButton == LEFT && state.equals("EDIT") && mouseY < height - 120) {
     map.removeBlock(map.blockAt(mouseX - xoffset, mouseY), map.getBlocks());
   }
   if (mouseButton == CENTER && state.equals("PLAY") && debug) {
     player.die();
   }
-  if (mouseButton == LEFT && menu.isHovering() && state.equals("PLAY") || state.equals("EDIT")) {
+  if (mouseButton == LEFT && menu.isHovering() && state.equals("PLAY")) {
     player.die();
     state = "MENU";
     return;
@@ -199,6 +206,7 @@ public void mouseClicked() {
     state = "MENU";
     return;
   }
+  
   if (state.equals("EDIT")) {
     if (mouseButton == LEFT && block.isHovering() && state.equals("EDIT")) {
       currentlySelected = "BLOCK";
@@ -269,9 +277,7 @@ public void mouseClicked() {
   }
 }
 
-
-
-
+// Getter for limit
 public static int getLimit() {
   return limit;
 }

@@ -18,6 +18,7 @@ public class Button {
     textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
 
+  // Constructor for different text size.
   public Button(float x, float y, float bWidth, float bHeight, String label, int textSize) {
     this.x = x;
     this.y = y;
@@ -29,6 +30,7 @@ public class Button {
     textFont(createFont("caveatbrush-regular.ttf", textSize));
   }
 
+  // Constructor for text color.
   public Button(float x, float y, float bWidth, float bHeight, String label, int textSize, int bColor) {
     this.x = x;
     this.y = y;
@@ -62,6 +64,8 @@ public class Button {
     if(isColored){
       fill(bColor);
     }
+    
+    // Puts the word at the center (kinda). 
     text(label, width - (width - x - bWidth / 2), height - (height - y - bHeight / 2.5));
 
     popMatrix();

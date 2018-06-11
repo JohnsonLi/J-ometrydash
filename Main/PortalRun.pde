@@ -15,6 +15,7 @@ public class PortalRun extends Block {
     popMatrix();
   }
 
+  // Same as portal but with different actions ;-; redundant.
   public void portalAction() {
     if (!(player.getMode() instanceof Running)) {
       player.getVelocity().multiplyY(.33);
