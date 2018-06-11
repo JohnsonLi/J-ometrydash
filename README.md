@@ -44,3 +44,4 @@ bold = milestone
 * After creating a level, level select doesn't update until restart.
 * Level select doesn't scroll.  
 * Bad things might happen if you don't enter anything for user input and press ok.  
+* The game is super slow if the computer isn't fast.
